@@ -7,23 +7,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Mitr:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         /* =========================================
-           CSS VARIABLES & RESET (โทนสีเป๊ะ)
+           CSS VARIABLES & RESET 
            ========================================= */
         :root {
-            /* โทนสีหลัก (ตามภาพ) */
-            --bg-color: #FFF0F6;          /* ชมพูพาสเทลอ่อน */
-            --main-pink: #F6A5C9;         /* ชมพูหลัก (ปุ่ม) */
-            --dark-pink: #E889B5;         /* ชมพูเข้ม (ข้อความ) */
-            --text-mauve: #E889B5;        /* สีม่วงอมชมพู (ข้อความย่อย) */
-            --text-mauve-dark: #C46793;   /* สีม่วงอมชมพูเข้มขึ้น (ข้อความสำคัญ) */
+            --bg-color: #FFF0F6;
+            --main-pink: #F6A5C9;
+            --dark-pink: #E889B5;
+            --text-mauve: #E889B5;
+            --text-mauve-dark: #C46793;
             --white: #FFFFFF;
             
-            /* ฟอนต์ */
             --font-thai: 'Kanit', sans-serif;
             --font-eng: 'Mitr', sans-serif;
         }
 
-        /* รีเซ็ตค่าพื้นฐาน */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
@@ -35,18 +32,18 @@
             align-items: flex-start;
             min-height: 100vh;
             padding: 30px 15px 50px;
-            overflow-x: hidden; /* ป้องกันแถบเลื่อนด้านข้าง */
+            overflow-x: hidden;
         }
 
         /* =========================================
-           BACKGROUND HEARTS ANIMATION (แก้ไขให้ลอยทันทีเมื่อเข้าเว็บ)
+           BACKGROUND HEARTS (ระบบใหม่: กระจายอยู่แล้ว และขยับไปมา)
            ========================================= */
         .background-hearts {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             z-index: -1;
             overflow: hidden;
             pointer-events: none;
@@ -54,44 +51,32 @@
 
         .heart {
             position: absolute;
-            background-image: url('heart.png.png'); /* เปลี่ยนชื่อไฟล์ให้ตรงกับ GitHub ของคุณ */
+            background-image: url('heart.png.png'); /* ดึงรูปหัวใจ */
             background-size: contain;
             background-repeat: no-repeat;
-            background-position: center;
-            opacity: 0; /* ซ่อนไว้ก่อนเริ่มอนิเมชั่น */
+            opacity: 0.85; /* ปรับให้ชัดขึ้น ไม่จางมาก */
+            animation: float-around ease-in-out infinite; /* ลอยไปมานุ่มๆ */
         }
 
-        /* Combined animation definition */
-        /* ปรับอนิเมชั่นให้ซ่อนด้านล่างแล้วลอยขึ้นพ้นจอ */
-        @keyframes float-heart {
-            0% {
-                bottom: -100px; /* เริ่มด้านล่างจอ */
-                transform: translateX(-20px) scale(0.8);
-                opacity: 0;
-            }
-            5% { opacity: 0.6; } /* ค่อยๆ ปรากฏ */
-            33% { transform: translateY(-40vh) translateX(30px) scale(1); }
-            66% { transform: translateY(-80vh) translateX(-20px) scale(0.9); }
-            95% { opacity: 0.5; } /* ค่อยๆ จางหายก่อนสุดจอ */
-            100% {
-                bottom: 110vh; /* สิ้นสุดพ้นจอ */
-                transform: translateX(20px) scale(1.1);
-                opacity: 0;
-            }
+        /* อนิเมชั่นให้หัวใจขยับขึ้นลงและสลับซ้ายขวา */
+        @keyframes float-around {
+            0% { transform: translateY(0) translateX(0) scale(1); }
+            33% { transform: translateY(-30px) translateX(20px) scale(1.1); }
+            66% { transform: translateY(20px) translateX(-20px) scale(0.9); }
+            100% { transform: translateY(0) translateX(0) scale(1); }
         }
 
-        /* ปรับใช้ Negative animation-delay (ค่าติดลบ) เพื่อให้หัวใจกระจายลอยอยู่เต็มหน้าจอทันทีเมื่อโหลดหน้าเว็บ */
-        /* และปรับขนาด/เวลาให้ดูเป็นธรรมชาติ */
-        .heart-1 { left: 5%; width: 40px; height: 40px; animation: float-heart 25s linear infinite; animation-delay: -5s; }
-        .heart-2 { left: 25%; width: 60px; height: 60px; animation: float-heart 28s linear infinite; animation-delay: -15s; }
-        .heart-3 { left: 50%; width: 35px; height: 35px; animation: float-heart 22s linear infinite; animation-delay: -3s; }
-        .heart-4 { left: 75%; width: 55px; height: 55px; animation: float-heart 30s linear infinite; animation-delay: -10s; }
-        .heart-5 { left: 85%; width: 45px; height: 45px; animation: float-heart 26s linear infinite; animation-delay: -22s; }
-        .heart-6 { left: 15%; width: 50px; height: 50px; animation: float-heart 29s linear infinite; animation-delay: -1s; }
-        .heart-7 { left: 40%; width: 70px; height: 70px; animation: float-heart 32s linear infinite; animation-delay: -18s; }
-        .heart-8 { left: 65%; width: 40px; height: 40px; animation: float-heart 23s linear infinite; animation-delay: -8s; }
-        .heart-9 { left: 90%; width: 65px; height: 65px; animation: float-heart 31s linear infinite; animation-delay: -12s; }
-        .heart-10 { left: 10%; width: 30px; height: 30px; animation: float-heart 21s linear infinite; animation-delay: -19s; }
+        /* กระจายหัวใจให้อยู่ทั่วหน้าจอตั้งแต่แรก */
+        .heart-1 { top: 10%; left: 10%; width: 50px; height: 50px; animation-duration: 18s; }
+        .heart-2 { top: 75%; left: 85%; width: 65px; height: 65px; animation-duration: 22s; }
+        .heart-3 { top: 40%; left: 20%; width: 40px; height: 40px; animation-duration: 16s; animation-delay: -5s; }
+        .heart-4 { top: 85%; left: 25%; width: 55px; height: 55px; animation-duration: 24s; animation-delay: -2s; }
+        .heart-5 { top: 25%; left: 80%; width: 45px; height: 45px; animation-duration: 20s; animation-delay: -7s; }
+        .heart-6 { top: 55%; left: 85%; width: 60px; height: 60px; animation-duration: 26s; animation-delay: -3s; }
+        .heart-7 { top: 15%; left: 60%; width: 70px; height: 70px; animation-duration: 25s; animation-delay: -8s; }
+        .heart-8 { top: 35%; left: 50%; width: 35px; height: 35px; animation-duration: 17s; animation-delay: -4s; }
+        .heart-9 { top: 65%; left: 10%; width: 55px; height: 55px; animation-duration: 23s; animation-delay: -9s; }
+        .heart-10 { top: 5%; left: 35%; width: 40px; height: 40px; animation-duration: 19s; animation-delay: -1s; }
 
         /* =========================================
            MAIN CONTAINER & COMMON STYLES
@@ -104,20 +89,18 @@
             gap: 15px;
             align-items: center;
             position: relative;
-            z-index: 1; /* Stay in front of hearts */
+            z-index: 1;
         }
 
-        /* Section Card (กล่องข้อมูล) */
         .section {
             background-color: var(--white);
             border-radius: 20px;
             padding: 25px 20px;
             width: 100%;
-            box-shadow: 0 6px 15px rgba(232, 137, 181, 0.15); /* เงาสีชมพูฟุ้ง */
-            border: 2px solid #FFEBF3; /* ขอบบางๆ */
+            box-shadow: 0 6px 15px rgba(232, 137, 181, 0.15);
+            border: 2px solid #FFEBF3;
         }
 
-        /* Section Title with Tulip Icon 🌷 */
         .section-title {
             color: var(--dark-pink);
             font-size: 20px;
@@ -130,12 +113,29 @@
             gap: 8px;
         }
 
-        /* Common Text Sizes */
-        .text-small { font-size: 14px; color: var(--text-mauve); }
-        .text-main { font-size: 16px; color: var(--dark-pink); }
+        /* =========================================
+           ANIMATED GRADIENT TEXT (ชื่อร้านไฟกระพริบไล่สี)
+           ========================================= */
+        .animated-gradient-text {
+            font-family: var(--font-eng);
+            font-size: 32px;
+            font-weight: 600;
+            /* โทนสีที่จะให้ไล่สลับกัน */
+            background: linear-gradient(45deg, #F6A5C9, #E889B5, #FFC1D9, #F6A5C9);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-shift 4s ease infinite; /* วนลูปทุก 4 วินาที */
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
         /* =========================================
-           BUTTON STYLES (ปุ่มแบบฟองสบู่เป๊ะ)
+           BUTTON STYLES
            ========================================= */
         .btn-bubbly {
             display: flex;
@@ -149,287 +149,130 @@
             font-weight: 500;
             font-size: 16px;
             transition: all 0.3s ease;
-            box-shadow: 
-                0 4px 6px rgba(0,0,0,0.1),
-                inset 0 -2px 5px rgba(0,0,0,0.05),
-                inset 0 2px 5px rgba(255,255,255,0.7); /* เอฟเฟกต์ฟองนูน */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1), inset 0 -2px 5px rgba(0,0,0,0.05), inset 0 2px 5px rgba(255,255,255,0.7);
             cursor: pointer;
             border: none;
         }
 
-        /* ปุ่มสีชมพู (Main Pink) */
-        .btn-pink {
-            background-color: var(--main-pink);
-            color: var(--white);
-            border: 2px solid transparent;
-        }
-        
-        /* ปุ่มสีขาวมีขอบปะ */
-        .btn-outline-dashed {
-            background-color: var(--white);
-            color: var(--dark-pink);
-            border: 2px dashed var(--main-pink);
-        }
-
-        /* Hover Effect */
+        .btn-pink { background-color: var(--main-pink); color: var(--white); border: 2px solid transparent; }
+        .btn-outline-dashed { background-color: var(--white); color: var(--dark-pink); border: 2px dashed var(--main-pink); }
         .btn-pink:hover, .btn-outline-dashed:hover {
             transform: translateY(-2px);
-            box-shadow: 
-                0 6px 12px rgba(232, 137, 181, 0.25),
-                inset 0 -2px 5px rgba(0,0,0,0.05),
-                inset 0 2px 5px rgba(255,255,255,0.8);
+            box-shadow: 0 6px 12px rgba(232, 137, 181, 0.25), inset 0 -2px 5px rgba(0,0,0,0.05), inset 0 2px 5px rgba(255,255,255,0.8);
         }
 
         /* =========================================
-           HEADER SECTION (Profile)
+           HEADER SECTION 
            ========================================= */
-        .header {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            width: 100%;
-            margin-bottom: 10px;
-        }
+        .header { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 15px; width: 100%; margin-bottom: 10px; }
+        .profile-img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 4px solid var(--white); box-shadow: 0 4px 10px rgba(232, 137, 181, 0.2); }
+        .header p.welcome { color: var(--text-mauve); font-size: 16px; margin-top: -5px; }
 
-        .profile-img {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--white);
-            box-shadow: 0 4px 10px rgba(232, 137, 181, 0.2);
-        }
-
-        .header h1 {
-            color: var(--dark-pink);
-            font-size: 28px;
-            font-weight: 600;
-            font-family: var(--font-eng); /* ใช้ Mitr สำหรับ English */
-        }
-
-        .header p.welcome {
-            color: var(--text-mauve);
-            font-size: 16px;
-            margin-top: -5px;
-        }
-
-        /* Badges Row */
-        .badges-container {
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 5px;
-        }
-
-        .badge {
-            background-color: var(--white);
-            color: var(--text-mauve-dark);
-            border-radius: 20px;
-            padding: 6px 16px;
-            font-size: 14px;
-            box-shadow: 0 2px 5px rgba(232, 137, 181, 0.1);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
+        .badges-container { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 5px; }
+        .badge { background-color: var(--white); color: var(--text-mauve-dark); border-radius: 20px; padding: 6px 16px; font-size: 14px; box-shadow: 0 2px 5px rgba(232, 137, 181, 0.1); display: flex; align-items: center; gap: 6px; }
 
         /* =========================================
            LISTS (Numbered & Notes)
            ========================================= */
-        .list-container {
+        .list-container { display: flex; flex-direction: column; gap: 12px; }
+        .list-item { display: flex; align-items: flex-start; gap: 12px; color: var(--dark-pink); font-size: 15px; line-height: 1.6; }
+        .num-circle { background-color: var(--main-pink); color: var(--white); width: 28px; height: 28px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 14px; font-weight: 600; flex-shrink: 0; box-shadow: inset 0 2px 4px rgba(255,255,255,0.4); }
+
+        /* =========================================
+           NEW DURATION STYLES (การ์ดระยะเวลารองานแบบใหม่)
+           ========================================= */
+        .duration-container-new {
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
 
-        .list-item {
+        .duration-box {
             display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            color: var(--dark-pink);
-            font-size: 15px;
-            line-height: 1.6;
+            align-items: center;
+            background: var(--white);
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 4px 12px rgba(232, 137, 181, 0.08);
+            border: 1px solid #FFEBF3;
+            transition: transform 0.2s;
         }
 
-        /* Number Circle */
-        .num-circle {
-            background-color: var(--main-pink);
-            color: var(--white);
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
+        /* แต่งสีพื้นหลังแบบพรีเมียมสำหรับการ์ดคิวเร่ง */
+        .duration-box.fast { background: linear-gradient(to right, #ffffff, #FFF0F6); border-color: var(--main-pink); }
+        .duration-box.super-fast { background: linear-gradient(to right, #ffffff, #FFE4F0); border-color: #FF8FBA; }
+
+        .duration-box:hover { transform: translateY(-2px); }
+
+        .d-icon {
+            font-size: 22px;
+            width: 44px;
+            height: 44px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 14px;
-            font-weight: 600;
+            background: #FFF5F9;
+            border-radius: 50%;
+            margin-right: 15px;
             flex-shrink: 0;
-            box-shadow: inset 0 2px 4px rgba(255,255,255,0.4);
+            box-shadow: inset 0 2px 4px rgba(232, 137, 181, 0.1);
         }
+        
+        .duration-box.fast .d-icon { background: #FFE4F0; }
+        .duration-box.super-fast .d-icon { background: #FFD6E8; }
 
-        /* =========================================
-           WORK DURATION SECTION (ระยะเวลา)
-           ========================================= */
-        .duration-container {
+        .d-details {
+            flex-grow: 1;
             display: flex;
             flex-direction: column;
-            gap: 10px;
         }
 
-        .duration-item {
-            background-color: var(--white);
-            border-radius: 20px;
-            padding: 12px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 8px rgba(232, 137, 181, 0.05);
-            border: 1px solid #FFEBF3;
-        }
+        .d-title { font-size: 16px; font-weight: 600; color: var(--dark-pink); margin-bottom: 2px; }
+        .d-sub { font-size: 13px; color: var(--text-mauve-dark); }
 
-        .duration-content {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--dark-pink);
-        }
-
-        /* Price Tags for Duration */
-        .price-tag-small {
-            background-color: var(--main-pink);
+        .d-price {
+            background: var(--main-pink);
             color: var(--white);
+            padding: 6px 14px;
             border-radius: 20px;
-            padding: 5px 14px;
             font-size: 14px;
             font-weight: 500;
             box-shadow: inset 0 2px 4px rgba(255,255,255,0.3);
+            white-space: nowrap;
         }
         
-        .price-tag-outline {
+        .d-price.normal {
+            background: transparent;
             color: var(--main-pink);
-            background-color: rgba(246, 165, 201, 0.1);
-            border-radius: 20px;
-            padding: 5px 14px;
-            font-size: 14px;
+            border: 1px dashed var(--main-pink);
+            box-shadow: none;
         }
 
         /* =========================================
-           SHOWCASE SECTION (ผลงานร้านฮิมะ)
+           SHOWCASE SECTION 
            ========================================= */
-        .showcase-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            width: 100%;
-        }
-
-        .showcase-item {
-            background-color: var(--white);
-            border-radius: 15px;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(232, 137, 181, 0.08);
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            border: 1px solid #FFEBF3;
-        }
-
-        .showcase-item img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            object-fit: cover;
-            border: 2px solid #FFF5F9;
-        }
-
-        .showcase-item h4 {
-            color: var(--dark-pink);
-            font-size: 16px;
-            font-weight: 500;
-        }
-
-        .showcase-item p {
-            color: var(--text-mauve);
-            font-size: 13px;
-        }
+        .showcase-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; width: 100%; }
+        .showcase-item { background-color: var(--white); border-radius: 15px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(232, 137, 181, 0.08); border: 1px solid #FFEBF3; }
+        .showcase-item img { width: 100%; height: auto; border-radius: 10px; object-fit: cover; border: 2px solid #FFF5F9; margin-bottom: 8px;}
+        .showcase-item h4 { color: var(--dark-pink); font-size: 16px; font-weight: 500; }
+        .showcase-item p { color: var(--text-mauve); font-size: 13px; }
 
         /* =========================================
-           SOCIAL SECTION (ปุ่มติดต่อด้านล่างสุด)
+           SOCIAL SECTION 
            ========================================= */
-        .social-section {
-            background-color: var(--white);
-            border-radius: 20px;
-            padding: 20px;
-            width: 100%;
-            box-shadow: 0 6px 15px rgba(232, 137, 181, 0.15);
-            border: 2px solid #FFEBF3;
-            margin-top: 10px;
-            text-align: center;
-        }
-        
-        /* Container สำหรับปุ่มฟองสบู่สามอัน */
-        .social-row {
-            display: flex;
-            gap: 12px;
-            width: 100%;
-            margin-bottom: 25px;
-        }
+        .social-section { background-color: var(--white); border-radius: 20px; padding: 20px; width: 100%; box-shadow: 0 6px 15px rgba(232, 137, 181, 0.15); border: 2px solid #FFEBF3; margin-top: 10px; text-align: center; }
+        .social-row { display: flex; gap: 12px; width: 100%; margin-bottom: 25px; }
+        .social-btn-bubbly { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 100%; padding: 15px; border-radius: 20px; text-decoration: none; font-weight: 400; font-size: 14px; color: var(--dark-pink); transition: all 0.3s ease; box-shadow: 0 6px 10px rgba(232, 137, 181, 0.15), inset 0 -2px 5px rgba(0,0,0,0.05), inset 0 2px 5px rgba(255,255,255,0.7); cursor: pointer; border: none; background-color: #FFF5F9; }
+        .social-btn-bubbly:hover { transform: translateY(-3px); box-shadow: 0 8px 15px rgba(232, 137, 181, 0.25), inset 0 -2px 5px rgba(0,0,0,0.05), inset 0 2px 5px rgba(255,255,255,0.8); }
+        .footer-text { color: var(--text-mauve); font-size: 12px; margin-top: 10px; letter-spacing: 0.3px; }
 
-        /* ปุ่มฟองสบู่เฉพาะสำหรับ Social (เพิ่ม gradient และ box-shadow ให้นูนขึ้นอีก) */
-        .social-btn-bubbly {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-            width: 100%;
-            padding: 15px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: 400;
-            font-size: 14px;
-            color: var(--dark-pink);
-            transition: all 0.3s ease;
-            box-shadow: 
-                0 6px 10px rgba(232, 137, 181, 0.15),
-                inset 0 -2px 5px rgba(0,0,0,0.05),
-                inset 0 2px 5px rgba(255,255,255,0.7); /* เอฟเฟกต์ฟองนูน */
-            cursor: pointer;
-            border: none;
-            background-color: #FFF5F9; /* สีชมพูอ่อนๆ ในฟอง */
-        }
-        
-        .social-btn-bubbly:hover {
-            transform: translateY(-3px);
-            box-shadow: 
-                0 8px 15px rgba(232, 137, 181, 0.25),
-                inset 0 -2px 5px rgba(0,0,0,0.05),
-                inset 0 2px 5px rgba(255,255,255,0.8);
-        }
-
-        /* footer text style inside section */
-        .footer-text {
-            color: var(--text-mauve);
-            font-size: 12px;
-            margin-top: 10px;
-            letter-spacing: 0.3px;
-        }
-
-        /* =========================================
-           SVG ICONS
-           ========================================= */
-        /* SVG Clock Icon in Mauve color */
         .icon-mauve { fill: var(--text-mauve); width: 18px; height: 18px; flex-shrink: 0; }
         .icon-check { width: 16px; height: 16px; }
-
     </style>
 </head>
 <body>
 
+    <!-- โซนกระจายหัวใจทั่วหน้าจอ -->
     <div class="background-hearts">
         <div class="heart heart-1"></div>
         <div class="heart heart-2"></div>
@@ -447,7 +290,10 @@
 
         <div class="header">
             <img src="pfp.png" alt="Profile" class="profile-img">
-            <h1>Himawari</h1>
+            
+            <!-- ใส่คลาสไฟกระพริบให้ชื่อ -->
+            <h1 class="animated-gradient-text">Himawari</h1>
+            
             <p class="welcome">Welcome To Hima Store</p>
             
             <div class="badges-container">
@@ -499,7 +345,6 @@
             <h2 class="section-title">
                 🌷 ราคางานสั่งทำ
             </h2>
-            
             <a href="#" target="_blank" class="btn-bubbly btn-pink">
                 คลิกเลย ✿
             </a>
@@ -510,31 +355,36 @@
                 🌷 ระยะเวลารองาน
             </h2>
             
-            <div class="duration-container">
-                <div class="duration-item">
-                    <div class="duration-content">
-                        <svg class="icon-mauve" viewBox="0 0 24 24"><path d="M12,2A10,10,0,1,0,22,12,10.011,10.011,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,12,20ZM12.5,7H11v6.2l5.4,3.2.8-1.3-4.7-2.8Z"/></svg>
-                        <span>คิวปกติ</span>
+            <!-- การ์ดคิวงานแบบใหม่ มีไอคอนและข้อความย่อย -->
+            <div class="duration-container-new">
+                <div class="duration-box">
+                    <div class="d-icon">⏳</div>
+                    <div class="d-details">
+                        <span class="d-title">คิวปกติ</span>
+                        <span class="d-sub">ใช้เวลารองาน 1-3 วัน</span>
                     </div>
-                    <span class="price-tag-outline">1-3 วัน</span>
+                    <div class="d-price normal">ราคาปกติ</div>
                 </div>
                 
-                <div class="duration-item">
-                    <div class="duration-content">
-                        <svg class="icon-mauve" viewBox="0 0 24 24"><path d="M12,2A10,10,0,1,0,22,12,10.011,10.011,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,12,20ZM12.5,7H11v6.2l5.4,3.2.8-1.3-4.7-2.8Z"/></svg>
-                        <span>คิวเร่ง 24 ชม.</span>
+                <div class="duration-box fast">
+                    <div class="d-icon">⚡</div>
+                    <div class="d-details">
+                        <span class="d-title">คิวเร่ง 24 ชม.</span>
+                        <span class="d-sub">รับงานไวทันใจ</span>
                     </div>
-                    <span class="price-tag-small">+100฿</span>
+                    <div class="d-price">+100฿</div>
                 </div>
                 
-                <div class="duration-item">
-                    <div class="duration-content">
-                        <svg class="icon-mauve" viewBox="0 0 24 24"><path d="M12,2A10,10,0,1,0,22,12,10.011,10.011,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,12,20ZM12.5,7H11v6.2l5.4,3.2.8-1.3-4.7-2.8Z"/></svg>
-                        <span>คิวเร่ง 3 ชม.</span>
+                <div class="duration-box super-fast">
+                    <div class="d-icon">🔥</div>
+                    <div class="d-details">
+                        <span class="d-title">คิวเร่ง 3 ชม.</span>
+                        <span class="d-sub">ด่วนสุด งานไฟไหม้</span>
                     </div>
-                    <span class="price-tag-small">+150฿</span>
+                    <div class="d-price">+150฿</div>
                 </div>
             </div>
+            
         </div>
 
         <div class="section">
@@ -548,37 +398,31 @@
                     <h4>Cute</h4>
                     <p>แวนหน้ารัก</p>
                 </div>
-                
                 <div class="showcase-item">
                     <img src="aurora.jpg" alt="ผลงาน แนวออโรร่า">
                     <h4>Aurora</h4>
                     <p>แนวออโรร่า</p>
                 </div>
-                
                 <div class="showcase-item">
                     <img src="pearlwave.jpg" alt="ผลงาน แนวเซ็ทเวฟ">
                     <h4>Pearlwave</h4>
                     <p>แนวเซ็ทเวฟ</p>
                 </div>
-                
                 <div class="showcase-item">
                     <img src="game.jpg" alt="ผลงาน แนวเกม/ทางกร">
                     <h4>ADS</h4>
                     <p>แนวเกม/ทางกร</p>
                 </div>
-                
                 <div class="showcase-item">
                     <img src="logo.jpg" alt="ผลงาน โลโก้/ลายน้ำ">
                     <h4>Logo</h4>
                     <p>โลโก้/ลายน้ำ</p>
                 </div>
-                
                 <div class="showcase-item">
                     <img src="cf.jpg" alt="ผลงาน รอจ่าย24ชม.">
                     <h4>CF 24 ชม.</h4>
                     <p>รอจ่าย24ชม.</p>
                 </div>
-                
             </div>
         </div>
 
@@ -616,12 +460,12 @@
             <div class="social-row">
                 <a href="https://lin.ee/XcbAB2v" target="_blank" class="social-btn-bubbly">
                     <svg class="icon-mauve" viewBox="0 0 24 24"><path d="M12,2A10,10,0,0,0,2,12c0,5.5,4.5,10,10,10s10-4.5,10-10A10,10,0,0,0,12,2Zm5.5,14H6.5c-.3,0-.5-.2-.5-.5s.2-.5.5-.5h11c.3,0,.5.2,.5.5S17.8,16,17.5,16Zm0-3.5H6.5c-.3,0-.5-.2-.5-.5s.2-.5.5-.5h11c.3,0,.5.2,.5.5S17.8,12.5,17.5,12.5Zm0-3.5H6.5c-.3,0-.5-.2-.5-.5s.2-.5.5-.5h11c.3,0,.5.2,.5.5S17.8,9,17.5,9Z"/></svg>
-                    @lgl3217e
+                    Line OA
                 </a>
                 
                 <a href="https://www.facebook.com/himawari.378446" target="_blank" class="social-btn-bubbly">
                     <svg class="icon-mauve" viewBox="0 0 24 24"><path d="M12,2A10,10,0,0,0,2,12c0,5.5,4.5,10,10,10s10-4.5,10-10A10,10,0,0,0,12,2Zm4.5,10.5h-3v7h-3v-7h-2.5v-3H11v-2c0-1.1.9-2,2-2h1.5v3H13v1h3.5l-1,3Z"/></svg>
-                    himawariʚɞ
+                    Facebook
                 </a>
                 
                 <a href="https://www.instagram.com/himawr.official?igsh=Z2tua28yaTV3ZDNz&utm_source=qr" target="_blank" class="social-btn-bubbly">
