@@ -36,7 +36,7 @@
         }
 
         /* =========================================
-           BACKGROUND HEARTS (ระบบใหม่: กระจายอยู่แล้ว และขยับไปมา)
+           BACKGROUND HEARTS
            ========================================= */
         .background-hearts {
             position: fixed;
@@ -51,14 +51,13 @@
 
         .heart {
             position: absolute;
-            background-image: url('heart.png.png'); /* ดึงรูปหัวใจ */
+            background-image: url('heart.png.png');
             background-size: contain;
             background-repeat: no-repeat;
-            opacity: 0.85; /* ปรับให้ชัดขึ้น ไม่จางมาก */
-            animation: float-around ease-in-out infinite; /* ลอยไปมานุ่มๆ */
+            opacity: 0.85; 
+            animation: float-around ease-in-out infinite; 
         }
 
-        /* อนิเมชั่นให้หัวใจขยับขึ้นลงและสลับซ้ายขวา */
         @keyframes float-around {
             0% { transform: translateY(0) translateX(0) scale(1); }
             33% { transform: translateY(-30px) translateX(20px) scale(1.1); }
@@ -66,7 +65,6 @@
             100% { transform: translateY(0) translateX(0) scale(1); }
         }
 
-        /* กระจายหัวใจให้อยู่ทั่วหน้าจอตั้งแต่แรก */
         .heart-1 { top: 10%; left: 10%; width: 50px; height: 50px; animation-duration: 18s; }
         .heart-2 { top: 75%; left: 85%; width: 65px; height: 65px; animation-duration: 22s; }
         .heart-3 { top: 40%; left: 20%; width: 40px; height: 40px; animation-duration: 16s; animation-delay: -5s; }
@@ -114,18 +112,17 @@
         }
 
         /* =========================================
-           ANIMATED GRADIENT TEXT (ชื่อร้านไฟกระพริบไล่สี)
+           ANIMATED GRADIENT TEXT
            ========================================= */
         .animated-gradient-text {
             font-family: var(--font-eng);
             font-size: 32px;
             font-weight: 600;
-            /* โทนสีที่จะให้ไล่สลับกัน */
             background: linear-gradient(45deg, #F6A5C9, #E889B5, #FFC1D9, #F6A5C9);
             background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: gradient-shift 4s ease infinite; /* วนลูปทุก 4 วินาที */
+            animation: gradient-shift 4s ease infinite; 
         }
 
         @keyframes gradient-shift {
@@ -172,14 +169,14 @@
         .badge { background-color: var(--white); color: var(--text-mauve-dark); border-radius: 20px; padding: 6px 16px; font-size: 14px; box-shadow: 0 2px 5px rgba(232, 137, 181, 0.1); display: flex; align-items: center; gap: 6px; }
 
         /* =========================================
-           LISTS (Numbered & Notes)
+           LISTS
            ========================================= */
         .list-container { display: flex; flex-direction: column; gap: 12px; }
         .list-item { display: flex; align-items: flex-start; gap: 12px; color: var(--dark-pink); font-size: 15px; line-height: 1.6; }
         .num-circle { background-color: var(--main-pink); color: var(--white); width: 28px; height: 28px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 14px; font-weight: 600; flex-shrink: 0; box-shadow: inset 0 2px 4px rgba(255,255,255,0.4); }
 
         /* =========================================
-           NEW DURATION STYLES (การ์ดระยะเวลารองานแบบใหม่)
+           DURATION STYLES (ไอคอนและกล่องข้อความ)
            ========================================= */
         .duration-container-new {
             display: flex;
@@ -198,14 +195,11 @@
             transition: transform 0.2s;
         }
 
-        /* แต่งสีพื้นหลังแบบพรีเมียมสำหรับการ์ดคิวเร่ง */
         .duration-box.fast { background: linear-gradient(to right, #ffffff, #FFF0F6); border-color: var(--main-pink); }
         .duration-box.super-fast { background: linear-gradient(to right, #ffffff, #FFE4F0); border-color: #FF8FBA; }
-
         .duration-box:hover { transform: translateY(-2px); }
 
         .d-icon {
-            font-size: 22px;
             width: 44px;
             height: 44px;
             display: flex;
@@ -248,6 +242,19 @@
             box-shadow: none;
         }
 
+        /* กล่องหมายเหตุเล็กๆ ด้านล่างการ์ด */
+        .duration-note {
+            font-size: 13px;
+            color: var(--text-mauve-dark);
+            background: #FFF5F9;
+            padding: 12px 15px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px dashed var(--main-pink);
+            line-height: 1.5;
+            margin-top: 5px;
+        }
+
         /* =========================================
            SHOWCASE SECTION 
            ========================================= */
@@ -272,7 +279,6 @@
 </head>
 <body>
 
-    <!-- โซนกระจายหัวใจทั่วหน้าจอ -->
     <div class="background-hearts">
         <div class="heart heart-1"></div>
         <div class="heart heart-2"></div>
@@ -290,10 +296,7 @@
 
         <div class="header">
             <img src="pfp.png" alt="Profile" class="profile-img">
-            
-            <!-- ใส่คลาสไฟกระพริบให้ชื่อ -->
             <h1 class="animated-gradient-text">Himawari</h1>
-            
             <p class="welcome">Welcome To Hima Store</p>
             
             <div class="badges-container">
@@ -309,10 +312,7 @@
         </div>
 
         <div class="section">
-            <h2 class="section-title">
-                🌷 ขั้นตอนสั่งงาน
-            </h2>
-            
+            <h2 class="section-title">🌷 ขั้นตอนสั่งงาน</h2>
             <div class="list-container">
                 <div class="list-item">
                     <div class="num-circle">1</div>
@@ -335,30 +335,30 @@
                     <div>รอร้านลงคิวและส่งลิ้งค์คิวให้</div>
                 </div>
             </div>
-            
             <a href="https://drive.google.com/drive/folders/10tyt8kxnPx5Cmu486YaeytlmyXPH0Lu2" target="_blank" class="btn-bubbly btn-pink" style="margin-top: 25px;">
                 ✿ เลือกของทำป้าย
             </a>
         </div>
 
         <div class="section">
-            <h2 class="section-title">
-                🌷 ราคางานสั่งทำ
-            </h2>
+            <h2 class="section-title">🌷 ราคางานสั่งทำ</h2>
             <a href="#" target="_blank" class="btn-bubbly btn-pink">
                 คลิกเลย ✿
             </a>
         </div>
 
         <div class="section">
-            <h2 class="section-title">
-                🌷 ระยะเวลารองาน
-            </h2>
+            <h2 class="section-title">🌷 ระยะเวลารองาน</h2>
             
-            <!-- การ์ดคิวงานแบบใหม่ มีไอคอนและข้อความย่อย -->
             <div class="duration-container-new">
+                
+                <!-- คิวปกติ: ไอคอนติ๊กถูก -->
                 <div class="duration-box">
-                    <div class="d-icon">⏳</div>
+                    <div class="d-icon" style="color: var(--main-pink);">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
                     <div class="d-details">
                         <span class="d-title">คิวปกติ</span>
                         <span class="d-sub">ใช้เวลารองาน 1-3 วัน</span>
@@ -366,8 +366,14 @@
                     <div class="d-price normal">ราคาปกติ</div>
                 </div>
                 
+                <!-- คิวเร่ง 24 ชม.: ไอคอนนาฬิกา -->
                 <div class="duration-box fast">
-                    <div class="d-icon">⚡</div>
+                    <div class="d-icon" style="color: var(--main-pink);">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
                     <div class="d-details">
                         <span class="d-title">คิวเร่ง 24 ชม.</span>
                         <span class="d-sub">รับงานไวทันใจ</span>
@@ -375,23 +381,34 @@
                     <div class="d-price">+100฿</div>
                 </div>
                 
+                <!-- คิวเร่ง 3 ชม.: ไอคอนนาฬิกา + ไฟลุก (ซ้อนกัน) -->
                 <div class="duration-box super-fast">
-                    <div class="d-icon">🔥</div>
+                    <div class="d-icon" style="position: relative; color: #FF8FBA;">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="#FF5252" style="position: absolute; bottom: -2px; right: -4px; filter: drop-shadow(0px 1px 2px rgba(0,0,0,0.2));">
+                            <path d="M17.66 11.2C17.43 10.9 17.15 10.64 16.89 10.38C16.22 9.78 15.46 9.35 14.82 8.72C13.33 7.26 13 4.85 13.95 3C13 3.23 12.18 3.75 11.46 4.32C8.87 6.4 7.85 10.05 9.1 13.22C9.14 13.32 9.15 13.44 9.11 13.55C9.07 13.65 8.98 13.73 8.87 13.76C8.76 13.79 8.64 13.76 8.55 13.69C8.45 13.62 8.4 13.5 8.38 13.39C8.16 11.83 8.62 10.27 9.53 9C8.32 10.16 7.57 11.75 7.42 13.41C7.22 15.61 8.05 17.81 9.61 19.33C11.16 20.85 13.39 21.5 15.5 21C17.64 20.48 19.36 18.86 19.86 16.7C20.43 14.28 19.5 12.28 17.66 11.2ZM14.5 18.5C13.67 18.5 13 17.83 13 17C13 16.17 14 14.5 14 14.5C14 14.5 15 16.17 15 17C15 17.83 14.33 18.5 14.5 18.5Z"/>
+                        </svg>
+                    </div>
                     <div class="d-details">
                         <span class="d-title">คิวเร่ง 3 ชม.</span>
                         <span class="d-sub">ด่วนสุด งานไฟไหม้</span>
                     </div>
                     <div class="d-price">+150฿</div>
                 </div>
+
+                <!-- หมายเหตุเรื่องการเลื่อนคิว -->
+                <div class="duration-note">
+                    ✿ กรณีร้านติดธุระกะทันหันจะทักแจ้งล่วงหน้าและเลื่อนคิวงาน หากรอไม่ได้ร้านยินดีคืนเงินค่ะ
+                </div>
+
             </div>
-            
         </div>
 
         <div class="section">
-            <h2 class="section-title">
-                🌷 ผลงานร้านฮิมะ
-            </h2>
-            
+            <h2 class="section-title">🌷 ผลงานร้านฮิมะ</h2>
             <div class="showcase-grid">
                 <div class="showcase-item">
                     <img src="cute.jpg" alt="ผลงาน แวนหน้ารัก">
@@ -427,10 +444,7 @@
         </div>
 
         <div class="section">
-            <h2 class="section-title">
-                🌷 หมายเหตุ
-            </h2>
-            
+            <h2 class="section-title">🌷 หมายเหตุ</h2>
             <div class="list-container">
                 <div class="list-item">
                     <span>✿</span>
@@ -456,7 +470,6 @@
         </div>
         
         <div class="social-section">
-            
             <div class="social-row">
                 <a href="https://lin.ee/XcbAB2v" target="_blank" class="social-btn-bubbly">
                     <svg class="icon-mauve" viewBox="0 0 24 24"><path d="M12,2A10,10,0,0,0,2,12c0,5.5,4.5,10,10,10s10-4.5,10-10A10,10,0,0,0,12,2Zm5.5,14H6.5c-.3,0-.5-.2-.5-.5s.2-.5.5-.5h11c.3,0,.5.2,.5.5S17.8,16,17.5,16Zm0-3.5H6.5c-.3,0-.5-.2-.5-.5s.2-.5.5-.5h11c.3,0,.5.2,.5.5S17.8,12.5,17.5,12.5Zm0-3.5H6.5c-.3,0-.5-.2-.5-.5s.2-.5.5-.5h11c.3,0,.5.2,.5.5S17.8,9,17.5,9Z"/></svg>
@@ -475,7 +488,7 @@
             </div>
             
             <p class="footer-text">
-                © 2026 Himawari — Made with ♡
+                © 2026 Himawari — store ♡
             </p>
         </div>
 
