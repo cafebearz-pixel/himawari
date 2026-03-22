@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Himawari - Made with ♡</title>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Mitr:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>Himawari - store ♡</title>
+    <!-- นำเข้าฟอนต์ Mitr และ Prompt ให้ถูกต้องตามที่คุณตั้งค่าไว้ -->
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         /* =========================================
            CSS VARIABLES & RESET 
@@ -17,15 +18,17 @@
             --text-mauve-dark: #C46793;
             --white: #FFFFFF;
             
-            --font-thai: 'mitr', sans-serif;
-            --font-eng: 'prompt', sans-serif;
+            --font-thai: 'Mitr', sans-serif;
+            --font-eng: 'Prompt', sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: var(--font-thai);
-            background-color: var(--bg-color);
+            /* พื้นหลังไล่สี ชมพูอ่อนไปขาวสว่าง ทันสมัย */
+            background: linear-gradient(135deg, #FFEBF3 0%, #FFFFFF 100%);
+            background-attachment: fixed;
             color: var(--dark-pink);
             display: flex;
             justify-content: center;
@@ -95,8 +98,8 @@
             border-radius: 20px;
             padding: 25px 20px;
             width: 100%;
-            box-shadow: 0 6px 15px rgba(232, 137, 181, 0.15);
-            border: 2px solid #FFEBF3;
+            box-shadow: 0 6px 20px rgba(232, 137, 181, 0.08); /* เงาฟุ้งแบบละมุน */
+            border: 1px solid #FFEBF3;
         }
 
         .section-title {
@@ -112,30 +115,14 @@
         }
 
         /* =========================================
-           ANIMATED GRADIENT TEXT
+           ANIMATED GRADIENT TEXT (ซ่อมแล้ว)
            ========================================= */
-         .btn-pink { background-color: var(--main-pink); color: var(--white); border: 2px solid transparent; }
-        
-        .btn-outline-dashed { 
-            background-color: var(--white); 
-            color: var(--dark-pink); 
-            border: 2px dashed var(--main-pink); 
-            animation: pulse-btn 2s infinite ease-in-out; /* สั่งให้เด้งวนไป */
-        }
-
-        /* อนิเมชั่นเด้งเข้า-ออก */
-        @keyframes pulse-btn {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.04); }
-            100% { transform: scale(1); }
-        }
-
-        .btn-pink:hover, .btn-outline-dashed:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 6px 12px rgba(232, 137, 181, 0.25), inset 0 -2px 5px rgba(0,0,0,0.05), inset 0 2px 5px rgba(255,255,255,0.8);
-            animation-play-state: paused; /* หยุดเด้งเวลาเอานิ้วจิ้มค้างไว้ */
-        }
-
+        .animated-gradient-text {
+            font-family: var(--font-eng);
+            font-size: 32px;
+            font-weight: 600;
+            background: linear-gradient(45deg, #F6A5C9, #E889B5, #FFC1D9, #F6A5C9);
+            background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: gradient-shift 4s ease infinite; 
@@ -148,7 +135,7 @@
         }
 
         /* =========================================
-           BUTTON STYLES
+           BUTTON STYLES (ดีไซน์ Modern ทันสมัย)
            ========================================= */
         .btn-bubbly {
             display: flex;
@@ -156,22 +143,48 @@
             justify-content: center;
             gap: 10px;
             width: 100%;
-            padding: 18px 25px;
+            padding: 16px 25px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 500;
             font-size: 16px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1), inset 0 -2px 5px rgba(0,0,0,0.05), inset 0 2px 5px rgba(255,255,255,0.7);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             cursor: pointer;
             border: none;
         }
 
-        .btn-pink { background-color: var(--main-pink); color: var(--white); border: 2px solid transparent; }
-        .btn-outline-dashed { background-color: var(--white); color: var(--dark-pink); border: 2px dashed var(--main-pink); }
-        .btn-pink:hover, .btn-outline-dashed:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(232, 137, 181, 0.25), inset 0 -2px 5px rgba(0,0,0,0.05), inset 0 2px 5px rgba(255,255,255,0.8);
+        /* ปุ่มสีชมพู (Modern Gradient & Soft Glow) */
+        .btn-pink { 
+            background: linear-gradient(135deg, #FFA6C9 0%, #F385B4 100%);
+            color: var(--white); 
+            box-shadow: 0 8px 20px rgba(243, 133, 180, 0.35); /* เงาสีชมพูเรืองแสง */
+            border: 1px solid rgba(255, 255, 255, 0.4); 
+        }
+        
+        .btn-pink:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(243, 133, 180, 0.5); 
+        }
+
+        /* ปุ่มเช็คคิวงานฮิมะ (Outline พร้อมอนิเมชั่นเด้ง) */
+        .btn-outline-dashed { 
+            background-color: var(--white); 
+            color: var(--dark-pink); 
+            border: 2px dashed #F6A5C9; 
+            box-shadow: 0 4px 15px rgba(232, 137, 181, 0.08);
+            animation: pulse-btn 2s infinite ease-in-out; 
+        }
+
+        .btn-outline-dashed:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(232, 137, 181, 0.15);
+            animation-play-state: paused; 
+        }
+
+        @keyframes pulse-btn {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
         }
 
         /* =========================================
@@ -189,7 +202,7 @@
            ========================================= */
         .list-container { display: flex; flex-direction: column; gap: 12px; }
         .list-item { display: flex; align-items: flex-start; gap: 12px; color: var(--dark-pink); font-size: 15px; line-height: 1.6; }
-        .num-circle { background-color: var(--main-pink); color: var(--white); width: 28px; height: 28px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 14px; font-weight: 600; flex-shrink: 0; box-shadow: inset 0 2px 4px rgba(255,255,255,0.4); }
+        .num-circle { background: linear-gradient(135deg, #FFA6C9, #F385B4); color: var(--white); width: 28px; height: 28px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 14px; font-weight: 600; flex-shrink: 0; box-shadow: 0 2px 6px rgba(243, 133, 180, 0.3); }
 
         /* =========================================
            DURATION STYLES (ไอคอนและกล่องข้อความ)
@@ -241,13 +254,13 @@
         .d-sub { font-size: 13px; color: var(--text-mauve-dark); }
 
         .d-price {
-            background: var(--main-pink);
+            background: linear-gradient(135deg, #FFA6C9, #F385B4);
             color: var(--white);
             padding: 6px 14px;
             border-radius: 20px;
             font-size: 14px;
             font-weight: 500;
-            box-shadow: inset 0 2px 4px rgba(255,255,255,0.3);
+            box-shadow: 0 4px 8px rgba(243, 133, 180, 0.3);
             white-space: nowrap;
         }
         
@@ -258,7 +271,6 @@
             box-shadow: none;
         }
 
-        /* กล่องหมายเหตุเล็กๆ ด้านล่างการ์ด */
         .duration-note {
             font-size: 13px;
             color: var(--text-mauve-dark);
@@ -321,7 +333,7 @@
                 <div class="badge">✿ ลายน้ำ</div>
             </div>
             
-     <a href="https://ksm-bb.github.io/hima-check-q/" target="_blank" class="btn-bubbly btn-outline-dashed">
+            <a href="https://ksm-bb.github.io/hima-check-q/" target="_blank" class="btn-bubbly btn-outline-dashed">
                 <svg class="icon-check" viewBox="0 0 512 512" style="fill: #E889B5;"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg>
                 เช็คคิวงานฮิมะ
             </a>
@@ -346,9 +358,12 @@
                     <div class="num-circle">4</div>
                     <div>ชำระเงินส่งสลิปและแจ้งชื่อเล่นเพื่อลงคิว</div>
                 </div>
+                <!-- ซ่อมขั้นตอนที่ 5 ให้แล้วครับ -->
                 <div class="list-item">
-            </a>
-
+                    <div class="num-circle">5</div>
+                    <div>รอร้านลงคิวและส่งลิ้งค์คิวให้</div>
+                </div>
+            </div>
             <a href="https://drive.google.com/drive/folders/10tyt8kxnPx5Cmu486YaeytlmyXPH0Lu2" target="_blank" class="btn-bubbly btn-pink" style="margin-top: 25px;">
                 ✿ เลือกของทำป้าย
             </a>
@@ -395,7 +410,7 @@
                     <div class="d-price">+100฿</div>
                 </div>
                 
-                <!-- คิวเร่ง 3 ชม.: ไอคอนนาฬิกา + ไฟสีแดงลุก (ซ้อนกัน) -->
+                <!-- คิวเร่ง 3 ชม.: ไอคอนนาฬิกา + ไฟสีแดงลุก -->
                 <div class="duration-box super-fast">
                     <div class="d-icon" style="position: relative; color: #FF8FBA;">
                         <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -413,7 +428,6 @@
                     <div class="d-price">+150฿</div>
                 </div>
 
-                <!-- หมายเหตุเรื่องการเลื่อนคิว -->
                 <div class="duration-note">
                     ✿ กรณีร้านติดธุระกะทันหันจะทักแจ้งล่วงหน้าและเลื่อนคิวงาน หากลูกค้าไม่สามารถรอได้ร้านยินดีคืนเงินเต็มจำนวนค่ะ
                 </div>
@@ -425,7 +439,7 @@
             <h2 class="section-title">🌷 ผลงานร้านฮิมะ</h2>
             <div class="showcase-grid">
                 <div class="showcase-item">
-                    <img src="cute.jpg" alt="ผลงาน แนวน่ารัก">
+                    <img src="cute.jpg" alt="ผลงาน แวนหน้ารัก">
                     <h4>Cute</h4>
                     <p>แนวน่ารัก</p>
                 </div>
@@ -477,7 +491,7 @@
                     <div>หลังได้รับงานรบกวนรีบบันทึกเก็บไว้ทันที งานหาย / บันทึกช้า / เผลอลบงาน ไม่ส่งใหม่ทุกกรณี ⚠️</div>
                 </div>
                 <div class="list-item">
-                      <span>✿</span>
+                    <span>✿</span>
                     <div>หากร้านสรุปยอดพร้อมส่งเลขบัญชีให้แล้วไม่โอนงดซื้อขายถาวร ยกเลิกคิวงานไม่คืนเงินใดๆทั้งสิ้นค่ะ ⚠️</div>
                 </div>
                 <div class="list-item">
