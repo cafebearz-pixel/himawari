@@ -114,12 +114,28 @@
         /* =========================================
            ANIMATED GRADIENT TEXT
            ========================================= */
-        .animated-gradient-text {
-            font-family: var(--font-eng);
-            font-size: 32px;
-            font-weight: 600;
-            background: linear-gradient(45deg, #F6A5C9, #E889B5, #FFC1D9, #F6A5C9);
-            background-size: 300% 300%;
+         .btn-pink { background-color: var(--main-pink); color: var(--white); border: 2px solid transparent; }
+        
+        .btn-outline-dashed { 
+            background-color: var(--white); 
+            color: var(--dark-pink); 
+            border: 2px dashed var(--main-pink); 
+            animation: pulse-btn 2s infinite ease-in-out; /* สั่งให้เด้งวนไป */
+        }
+
+        /* อนิเมชั่นเด้งเข้า-ออก */
+        @keyframes pulse-btn {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+            100% { transform: scale(1); }
+        }
+
+        .btn-pink:hover, .btn-outline-dashed:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 6px 12px rgba(232, 137, 181, 0.25), inset 0 -2px 5px rgba(0,0,0,0.05), inset 0 2px 5px rgba(255,255,255,0.8);
+            animation-play-state: paused; /* หยุดเด้งเวลาเอานิ้วจิ้มค้างไว้ */
+        }
+
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: gradient-shift 4s ease infinite; 
