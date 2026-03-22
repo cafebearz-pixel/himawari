@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- โค้ดนี้ช่วยป้องกันไม่ให้ไอแพด/ไอโฟน เปลี่ยนเลขบัญชีเป็นสีน้ำเงิน -->
+    <meta name="format-detection" content="telephone=no">
     <title>Himawari - Made with ♡</title>
     <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -232,44 +234,53 @@
         .showcase-item p { color: var(--text-mauve); font-size: 13px; }
 
         /* =========================================
-           BANK ACCOUNT SECTION (ดีไซน์การ์ดบัญชีใหม่)
+           BANK ACCOUNT SECTION (ดีไซน์ใหม่ อยู่ข้างกัน)
            ========================================= */
+        .bank-cards-wrapper {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* แบ่งเป็น 2 คอลัมน์เท่าๆ กัน */
+            gap: 12px;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
         .bank-card {
-            background: linear-gradient(to right, #ffffff, #FFF0F6);
+            background: linear-gradient(to bottom right, #ffffff, #FFF0F6);
             border-radius: 16px;
-            padding: 20px 15px;
+            padding: 15px 10px; /* ปรับลด padding ให้พอดีกับจอ */
             box-shadow: 0 4px 12px rgba(232, 137, 181, 0.08);
             border: 1px solid var(--main-pink);
-            margin-bottom: 15px;
             text-align: center;
-            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         
-        .bank-name { font-size: 16px; font-weight: 600; color: var(--dark-pink); margin-bottom: 3px;}
-        .acc-name { font-size: 14px; color: var(--text-mauve-dark); margin-bottom: 5px; }
-        .acc-note { font-size: 13px; color: #ff6eb4; margin-bottom: 12px; }
+        .bank-name { font-size: 14px; font-weight: 600; color: var(--dark-pink); margin-bottom: 2px;}
+        .acc-name { font-size: 12px; color: var(--text-mauve-dark); margin-bottom: 4px; }
+        .acc-note { font-size: 11px; color: #ff6eb4; margin-bottom: 12px; }
         
         .acc-num {
-            font-size: 20px;
+            font-size: 14px; /* ปรับตัวเลขเล็กลงนิดนึงให้อยู่บรรทัดเดียว */
             font-weight: 600;
-            font-family: var(--font-eng); /* ใช้ฟอนต์ Prompt เพื่อให้อ่านตัวเลขชัดเจน */
-            color: var(--main-pink);
-            letter-spacing: 2px;
-            margin-bottom: 15px;
+            font-family: var(--font-eng);
+            color: #905D4A; /* เปลี่ยนเป็นสีน้ำตาลละมุนๆ */
+            letter-spacing: 1px;
+            margin-bottom: 12px;
             background: var(--white);
-            padding: 8px 20px;
-            border-radius: 12px;
+            padding: 6px 8px;
+            border-radius: 10px;
             display: inline-block;
-            border: 1px dashed var(--main-pink);
+            border: 1px dashed #905D4A; /* ขอบสีน้ำตาล */
         }
 
         .copy-btn {
             background: linear-gradient(135deg, #FFA6C9, #F385B4);
             color: var(--white);
             border: none;
-            padding: 10px 25px;
+            padding: 8px 10px;
             border-radius: 50px;
-            font-size: 14px;
+            font-size: 12px;
             font-family: var(--font-thai);
             cursor: pointer;
             box-shadow: 0 4px 10px rgba(243, 133, 180, 0.3);
@@ -277,8 +288,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            margin: 0 auto;
+            gap: 4px;
+            width: 100%; /* ให้ปุ่มกว้างเต็มกรอบบัญชี */
         }
         
         .copy-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(243, 133, 180, 0.4); }
@@ -292,7 +303,6 @@
             text-align: center;
             border: 1px dashed var(--main-pink);
             line-height: 1.6;
-            margin-top: 10px;
         }
 
         /* =========================================
@@ -471,39 +481,37 @@
             </div>
         </div>
 
-        <!-- ชำระเงิน SECTION -->
+        <!-- ชำระเงิน SECTION (จัดเรียงข้างกัน & สีบัญชีน้ำตาล) -->
         <div class="section">
             <h2 class="section-title">💳 ช่องทางการชำระเงิน</h2>
             
-            <!-- KBANK -->
-            <div class="bank-card">
-                <div class="bank-name">ธนาคารกสิกรไทย (KBANK)</div>
-                <div class="acc-name">คุณัญญา ก้านพลู</div>
-                <div class="acc-note">บัญชีนี้บัญชีเดียวเท่านั้นนะคะ ✅</div>
-                <!-- ID เอาไว้ให้สคริปต์ดึงตัวเลขไปก๊อปปี้ -->
-                <div class="acc-num" id="kbank-num">0358209394</div>
-                
-                <button class="copy-btn" onclick="copyText('kbank-num', this)">
-                    📋 คัดลอกเลขบัญชี
-                </button>
-            </div>
+            <div class="bank-cards-wrapper">
+                <!-- KBANK -->
+                <div class="bank-card">
+                    <div class="bank-name">กสิกรไทย</div>
+                    <div class="acc-name">ชื่อบัญชี : คุณัญญา</div>
+                    <div class="acc-note">บัญชีนี้เท่านั้น ✅</div>
+                    <div class="acc-num" id="kbank-num">0358209394</div>
+                    <button class="copy-btn" onclick="copyText('kbank-num', this)">
+                        📋 คัดลอกเลข
+                    </button>
+                </div>
 
-            <!-- True Money -->
-            <div class="bank-card">
-                <div class="bank-name">True Money Wallet</div>
-                <div class="acc-name">คุณัญญา ก้านพลู</div>
-                <div class="acc-note">โอนเข้า Wallet +2 บาทนะคะ ✅</div>
-                <!-- ID เอาไว้ให้สคริปต์ดึงตัวเลขไปก๊อปปี้ -->
-                <div class="acc-num" id="true-num">0838270002</div>
-                
-                <button class="copy-btn" onclick="copyText('true-num', this)">
-                    📋 คัดลอกเบอร์
-                </button>
+                <!-- True Money -->
+                <div class="bank-card">
+                    <div class="bank-name">True Money</div>
+                    <div class="acc-name">ชื่อบัญชี : คุณัญญา</div>
+                    <div class="acc-note">โอนเข้า Wallet +2฿ ✅</div>
+                    <div class="acc-num" id="true-num">0838270002</div>
+                    <button class="copy-btn" onclick="copyText('true-num', this)">
+                        📋 คัดลอกเบอร์
+                    </button>
+                </div>
             </div>
 
             <div class="payment-warning">
                 📌 รบกวนโอนแล้ว <b>แนบสลิปทุกครั้ง</b> นะคะ ✨<br>
-                <span style="color:#ff6eb4;">⚠️ โอนผิดต้องโอนใหม่น้า ทางร้านไม่โอนคืนทุกกรณีค่ะ 🙏💖</span>
+                <span style="color:#ff6eb4;">⚠️ เช็คยอดและเลขบัญชีก่อนโอน ไม่มีการโอนคืนใดๆทั้งสิ้นนะคะ </span>
             </div>
         </div>
 
@@ -565,16 +573,10 @@
     <!-- สคริปต์สำหรับระบบกดปุ่มแล้วก๊อปปี้ข้อความ -->
     <script>
         function copyText(elementId, btnElement) {
-            // ดึงข้อความจาก ID
             var textToCopy = document.getElementById(elementId).innerText;
-            
-            // ใช้คำสั่งก๊อปปี้
             navigator.clipboard.writeText(textToCopy).then(function() {
-                // เปลี่ยนข้อความปุ่ม
                 var originalText = btnElement.innerHTML;
                 btnElement.innerHTML = "✅ คัดลอกแล้ว!";
-                
-                // คืนค่าข้อความปุ่มกลับมาหลังผ่านไป 2 วินาที
                 setTimeout(function() {
                     btnElement.innerHTML = originalText;
                 }, 2000);
