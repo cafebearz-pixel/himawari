@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Himawari - store ♡</title>
-    <!-- นำเข้าฟอนต์ Mitr และ Prompt ให้ถูกต้องตามที่คุณตั้งค่าไว้ -->
+    <title>Himawari - Made with ♡</title>
     <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         /* =========================================
@@ -26,7 +25,6 @@
         
         body {
             font-family: var(--font-thai);
-            /* พื้นหลังไล่สี ชมพูอ่อนไปขาวสว่าง ทันสมัย */
             background: linear-gradient(135deg, #FFEBF3 0%, #FFFFFF 100%);
             background-attachment: fixed;
             color: var(--dark-pink);
@@ -98,7 +96,7 @@
             border-radius: 20px;
             padding: 25px 20px;
             width: 100%;
-            box-shadow: 0 6px 20px rgba(232, 137, 181, 0.08); /* เงาฟุ้งแบบละมุน */
+            box-shadow: 0 6px 20px rgba(232, 137, 181, 0.08); 
             border: 1px solid #FFEBF3;
         }
 
@@ -115,7 +113,7 @@
         }
 
         /* =========================================
-           ANIMATED GRADIENT TEXT (ซ่อมแล้ว)
+           ANIMATED GRADIENT TEXT
            ========================================= */
         .animated-gradient-text {
             font-family: var(--font-eng);
@@ -135,7 +133,7 @@
         }
 
         /* =========================================
-           BUTTON STYLES (ดีไซน์ Modern ทันสมัย)
+           BUTTON STYLES 
            ========================================= */
         .btn-bubbly {
             display: flex;
@@ -153,11 +151,10 @@
             border: none;
         }
 
-        /* ปุ่มสีชมพู (Modern Gradient & Soft Glow) */
         .btn-pink { 
             background: linear-gradient(135deg, #FFA6C9 0%, #F385B4 100%);
             color: var(--white); 
-            box-shadow: 0 8px 20px rgba(243, 133, 180, 0.35); /* เงาสีชมพูเรืองแสง */
+            box-shadow: 0 8px 20px rgba(243, 133, 180, 0.35); 
             border: 1px solid rgba(255, 255, 255, 0.4); 
         }
         
@@ -166,7 +163,6 @@
             box-shadow: 0 12px 25px rgba(243, 133, 180, 0.5); 
         }
 
-        /* ปุ่มเช็คคิวงานฮิมะ (Outline พร้อมอนิเมชั่นเด้ง) */
         .btn-outline-dashed { 
             background-color: var(--white); 
             color: var(--dark-pink); 
@@ -195,7 +191,7 @@
         .header p.welcome { color: var(--text-mauve); font-size: 16px; margin-top: -5px; }
 
         .badges-container { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 5px; }
-        .badge { background-color: var(--white); color: var(--text-mauve-dark); border-radius: 20px; padding: 6px 16px; font-size: 14px; box-shadow: 0 2px 5px rgba(232, 137, 181, 0.1); display: flex; align-items: center; gap: 6px; }
+        .badge { background-color: var(--white); color: var(--text-mauve-dark); border-radius: 20px; padding: 6px 16px; font-size: 14px; box-shadow: 0 2px 5px rgba(232, 137, 181, 0.1); display: flex; align-items: center; gap: 6px; border: 1px solid #FFEBF3;}
 
         /* =========================================
            LISTS
@@ -205,83 +201,26 @@
         .num-circle { background: linear-gradient(135deg, #FFA6C9, #F385B4); color: var(--white); width: 28px; height: 28px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 14px; font-weight: 600; flex-shrink: 0; box-shadow: 0 2px 6px rgba(243, 133, 180, 0.3); }
 
         /* =========================================
-           DURATION STYLES (ไอคอนและกล่องข้อความ)
+           DURATION STYLES
            ========================================= */
-        .duration-container-new {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .duration-box {
-            display: flex;
-            align-items: center;
-            background: var(--white);
-            border-radius: 16px;
-            padding: 16px;
-            box-shadow: 0 4px 12px rgba(232, 137, 181, 0.08);
-            border: 1px solid #FFEBF3;
-            transition: transform 0.2s;
-        }
-
+        .duration-container-new { display: flex; flex-direction: column; gap: 12px; }
+        .duration-box { display: flex; align-items: center; background: var(--white); border-radius: 16px; padding: 16px; box-shadow: 0 4px 12px rgba(232, 137, 181, 0.08); border: 1px solid #FFEBF3; transition: transform 0.2s; }
         .duration-box.fast { background: linear-gradient(to right, #ffffff, #FFF0F6); border-color: var(--main-pink); }
         .duration-box.super-fast { background: linear-gradient(to right, #ffffff, #FFE4F0); border-color: #FF8FBA; }
         .duration-box:hover { transform: translateY(-2px); }
 
-        .d-icon {
-            width: 44px;
-            height: 44px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #FFF5F9;
-            border-radius: 50%;
-            margin-right: 15px;
-            flex-shrink: 0;
-            box-shadow: inset 0 2px 4px rgba(232, 137, 181, 0.1);
-        }
-        
+        .d-icon { width: 44px; height: 44px; display: flex; justify-content: center; align-items: center; background: #FFF5F9; border-radius: 50%; margin-right: 15px; flex-shrink: 0; box-shadow: inset 0 2px 4px rgba(232, 137, 181, 0.1); }
         .duration-box.fast .d-icon { background: #FFE4F0; }
         .duration-box.super-fast .d-icon { background: #FFD6E8; }
 
-        .d-details {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
+        .d-details { flex-grow: 1; display: flex; flex-direction: column; }
         .d-title { font-size: 16px; font-weight: 600; color: var(--dark-pink); margin-bottom: 2px; }
         .d-sub { font-size: 13px; color: var(--text-mauve-dark); }
 
-        .d-price {
-            background: linear-gradient(135deg, #FFA6C9, #F385B4);
-            color: var(--white);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 500;
-            box-shadow: 0 4px 8px rgba(243, 133, 180, 0.3);
-            white-space: nowrap;
-        }
-        
-        .d-price.normal {
-            background: transparent;
-            color: var(--main-pink);
-            border: 1px dashed var(--main-pink);
-            box-shadow: none;
-        }
+        .d-price { background: linear-gradient(135deg, #FFA6C9, #F385B4); color: var(--white); padding: 6px 14px; border-radius: 20px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 8px rgba(243, 133, 180, 0.3); white-space: nowrap; }
+        .d-price.normal { background: transparent; color: var(--main-pink); border: 1px dashed var(--main-pink); box-shadow: none; }
 
-        .duration-note {
-            font-size: 13px;
-            color: var(--text-mauve-dark);
-            background: #FFF5F9;
-            padding: 12px 15px;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px dashed var(--main-pink);
-            line-height: 1.5;
-            margin-top: 5px;
-        }
+        .duration-note { font-size: 13px; color: var(--text-mauve-dark); background: #FFF5F9; padding: 12px 15px; border-radius: 12px; text-align: center; border: 1px dashed var(--main-pink); line-height: 1.5; margin-top: 5px; }
 
         /* =========================================
            SHOWCASE SECTION 
@@ -293,12 +232,76 @@
         .showcase-item p { color: var(--text-mauve); font-size: 13px; }
 
         /* =========================================
+           BANK ACCOUNT SECTION (ดีไซน์การ์ดบัญชีใหม่)
+           ========================================= */
+        .bank-card {
+            background: linear-gradient(to right, #ffffff, #FFF0F6);
+            border-radius: 16px;
+            padding: 20px 15px;
+            box-shadow: 0 4px 12px rgba(232, 137, 181, 0.08);
+            border: 1px solid var(--main-pink);
+            margin-bottom: 15px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .bank-name { font-size: 16px; font-weight: 600; color: var(--dark-pink); margin-bottom: 3px;}
+        .acc-name { font-size: 14px; color: var(--text-mauve-dark); margin-bottom: 5px; }
+        .acc-note { font-size: 13px; color: #ff6eb4; margin-bottom: 12px; }
+        
+        .acc-num {
+            font-size: 20px;
+            font-weight: 600;
+            font-family: var(--font-eng); /* ใช้ฟอนต์ Prompt เพื่อให้อ่านตัวเลขชัดเจน */
+            color: var(--main-pink);
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            background: var(--white);
+            padding: 8px 20px;
+            border-radius: 12px;
+            display: inline-block;
+            border: 1px dashed var(--main-pink);
+        }
+
+        .copy-btn {
+            background: linear-gradient(135deg, #FFA6C9, #F385B4);
+            color: var(--white);
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-family: var(--font-thai);
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(243, 133, 180, 0.3);
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 0 auto;
+        }
+        
+        .copy-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(243, 133, 180, 0.4); }
+
+        .payment-warning {
+            font-size: 13px;
+            color: var(--text-mauve-dark);
+            background: #FFF5F9;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px dashed var(--main-pink);
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+
+        /* =========================================
            SOCIAL SECTION 
            ========================================= */
-        .social-section { background-color: var(--white); border-radius: 20px; padding: 20px; width: 100%; box-shadow: 0 6px 15px rgba(232, 137, 181, 0.15); border: 2px solid #FFEBF3; margin-top: 10px; text-align: center; }
+        .social-section { background-color: var(--white); border-radius: 20px; padding: 20px; width: 100%; box-shadow: 0 6px 20px rgba(232, 137, 181, 0.08); border: 1px solid #FFEBF3; margin-top: 10px; text-align: center; }
         .social-row { display: flex; gap: 12px; width: 100%; margin-bottom: 25px; }
-        .social-btn-bubbly { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 100%; padding: 15px; border-radius: 20px; text-decoration: none; font-weight: 400; font-size: 14px; color: var(--dark-pink); transition: all 0.3s ease; box-shadow: 0 6px 10px rgba(232, 137, 181, 0.15), inset 0 -2px 5px rgba(0,0,0,0.05), inset 0 2px 5px rgba(255,255,255,0.7); cursor: pointer; border: none; background-color: #FFF5F9; }
-        .social-btn-bubbly:hover { transform: translateY(-3px); box-shadow: 0 8px 15px rgba(232, 137, 181, 0.25), inset 0 -2px 5px rgba(0,0,0,0.05), inset 0 2px 5px rgba(255,255,255,0.8); }
+        .social-btn-bubbly { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 100%; padding: 15px; border-radius: 20px; text-decoration: none; font-weight: 400; font-size: 14px; color: var(--dark-pink); transition: all 0.3s ease; background-color: var(--white); box-shadow: 0 4px 12px rgba(232, 137, 181, 0.08); border: 1px solid #FFEBF3;}
+        .social-btn-bubbly:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(232, 137, 181, 0.15); }
         .footer-text { color: var(--text-mauve); font-size: 12px; margin-top: 10px; letter-spacing: 0.3px; }
 
         .icon-mauve { fill: var(--text-mauve); width: 18px; height: 18px; flex-shrink: 0; }
@@ -358,12 +361,12 @@
                     <div class="num-circle">4</div>
                     <div>ชำระเงินส่งสลิปและแจ้งชื่อเล่นเพื่อลงคิว</div>
                 </div>
-                <!-- ซ่อมขั้นตอนที่ 5 ให้แล้วครับ -->
                 <div class="list-item">
                     <div class="num-circle">5</div>
                     <div>รอร้านลงคิวและส่งลิ้งค์คิวให้</div>
                 </div>
             </div>
+
             <a href="https://drive.google.com/drive/folders/10tyt8kxnPx5Cmu486YaeytlmyXPH0Lu2" target="_blank" class="btn-bubbly btn-pink" style="margin-top: 25px;">
                 ✿ เลือกของทำป้าย
             </a>
@@ -381,7 +384,6 @@
             
             <div class="duration-container-new">
                 
-                <!-- คิวปกติ: ไอคอนติ๊กถูก -->
                 <div class="duration-box">
                     <div class="d-icon" style="color: var(--main-pink);">
                         <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
@@ -395,7 +397,6 @@
                     <div class="d-price normal">ราคาปกติ</div>
                 </div>
                 
-                <!-- คิวเร่ง 24 ชม.: ไอคอนนาฬิกา -->
                 <div class="duration-box fast">
                     <div class="d-icon" style="color: var(--main-pink);">
                         <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -410,7 +411,6 @@
                     <div class="d-price">+100฿</div>
                 </div>
                 
-                <!-- คิวเร่ง 3 ชม.: ไอคอนนาฬิกา + ไฟสีแดงลุก -->
                 <div class="duration-box super-fast">
                     <div class="d-icon" style="position: relative; color: #FF8FBA;">
                         <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -471,6 +471,42 @@
             </div>
         </div>
 
+        <!-- ชำระเงิน SECTION -->
+        <div class="section">
+            <h2 class="section-title">💳 ช่องทางการชำระเงิน</h2>
+            
+            <!-- KBANK -->
+            <div class="bank-card">
+                <div class="bank-name">ธนาคารกสิกรไทย (KBANK)</div>
+                <div class="acc-name">คุณัญญา ก้านพลู</div>
+                <div class="acc-note">บัญชีนี้บัญชีเดียวเท่านั้นนะคะ ✅</div>
+                <!-- ID เอาไว้ให้สคริปต์ดึงตัวเลขไปก๊อปปี้ -->
+                <div class="acc-num" id="kbank-num">0358209394</div>
+                
+                <button class="copy-btn" onclick="copyText('kbank-num', this)">
+                    📋 คัดลอกเลขบัญชี
+                </button>
+            </div>
+
+            <!-- True Money -->
+            <div class="bank-card">
+                <div class="bank-name">True Money Wallet</div>
+                <div class="acc-name">คุณัญญา ก้านพลู</div>
+                <div class="acc-note">โอนเข้า Wallet +2 บาทนะคะ ✅</div>
+                <!-- ID เอาไว้ให้สคริปต์ดึงตัวเลขไปก๊อปปี้ -->
+                <div class="acc-num" id="true-num">0838270002</div>
+                
+                <button class="copy-btn" onclick="copyText('true-num', this)">
+                    📋 คัดลอกเบอร์
+                </button>
+            </div>
+
+            <div class="payment-warning">
+                📌 รบกวนโอนแล้ว <b>แนบสลิปทุกครั้ง</b> นะคะ ✨<br>
+                <span style="color:#ff6eb4;">⚠️ โอนผิดต้องโอนใหม่น้า ทางร้านไม่โอนคืนทุกกรณีค่ะ 🙏💖</span>
+            </div>
+        </div>
+
         <div class="section">
             <h2 class="section-title">🌷 หมายเหตุ</h2>
             <div class="list-container">
@@ -526,5 +562,26 @@
 
     </div>
 
+    <!-- สคริปต์สำหรับระบบกดปุ่มแล้วก๊อปปี้ข้อความ -->
+    <script>
+        function copyText(elementId, btnElement) {
+            // ดึงข้อความจาก ID
+            var textToCopy = document.getElementById(elementId).innerText;
+            
+            // ใช้คำสั่งก๊อปปี้
+            navigator.clipboard.writeText(textToCopy).then(function() {
+                // เปลี่ยนข้อความปุ่ม
+                var originalText = btnElement.innerHTML;
+                btnElement.innerHTML = "✅ คัดลอกแล้ว!";
+                
+                // คืนค่าข้อความปุ่มกลับมาหลังผ่านไป 2 วินาที
+                setTimeout(function() {
+                    btnElement.innerHTML = originalText;
+                }, 2000);
+            }).catch(function(err) {
+                console.error('ไม่สามารถคัดลอกได้: ', err);
+            });
+        }
+    </script>
 </body>
 </html>
