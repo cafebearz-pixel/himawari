@@ -20,7 +20,7 @@
             
             /* ฟอนต์ */
             --font-thai: 'Kanit', sans-serif;
-            --font-eng: 'Mitr', sans-serif;
+            --font-eng: 'Prompt', sans-serif;
         }
 
         /* รีเซ็ตค่าพื้นฐาน */
@@ -28,21 +28,82 @@
         
         body {
             font-family: var(--font-thai);
-            background-color: var(--bg-color);
+            background-color: var(--bg-color); /* Maintain bg color */
             color: var(--dark-pink);
             display: flex;
             justify-content: center;
             align-items: flex-start;
             min-height: 100vh;
             padding: 30px 15px 50px;
-            /* พื้นหลังลายหัวใจลอย */
-            background-image: 
-                radial-gradient(var(--dark-pink) 1px, transparent 1px), 
-                radial-gradient(var(--dark-pink) 1px, var(--bg-color) 1px);
-            background-position: 0 0, 15px 15px;
-            background-size: 30px 30px;
-            background-attachment: fixed;
+            overflow-x: hidden; /* ป้องกันแถบเลื่อนด้านข้าง */
         }
+
+        /* =========================================
+           BACKGROUND HEARTS ANIMATION (หัวใจลอยฟุ้งๆ)
+           ========================================= */
+        .background-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Place behind content */
+            overflow: hidden;
+            pointer-events: none; /* Ignore clicks */
+        }
+
+        .heart {
+            position: absolute;
+            background-image: url('heart.png'); /* The user's image - YOU MUST PLACE THIS FILE */
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.6; /* Slight transparency for "ฟุ้ง" effect */
+        }
+
+        /* Combined animation definition */
+        /* ทำให้ลอยขึ้น (Y), สลับซ้ายขวา (X), และเปลี่ยนขนาด (scale) ผสมกัน */
+        @keyframes float-heart {
+            0% {
+                bottom: -20vh; /* Start off-screen */
+                transform: translateX(-30px) scale(0.9);
+                opacity: 0.6;
+            }
+            15% {
+                transform: translateX(40px) scale(1.05);
+                opacity: 0.7;
+            }
+            30% {
+                transform: translateX(-25px) scale(0.95);
+            }
+            45% {
+                transform: translateX(35px) scale(1.1);
+            }
+            60% {
+                transform: translateX(-20px) scale(1.05);
+            }
+            75% {
+                transform: translateX(25px) scale(1);
+            }
+            100% {
+                bottom: 120vh; /* End off-screen */
+                transform: translateX(0px) scale(1.2);
+                opacity: 0; /* Fade out */
+            }
+        }
+
+        /* Define individual heart classes with different sizes, initial left, duration, and delay */
+        /* เล็กใหญ่ผสมกัน ช้าเร็วต่างกัน และเริ่มเวลาต่างกัน */
+        .heart-1 { left: 10%; width: 40px; height: 40px; animation: float-heart 35s linear infinite; animation-delay: 0s; }
+        .heart-2 { left: 30%; width: 70px; height: 70px; animation: float-heart 28s linear infinite; animation-delay: 5s; }
+        .heart-3 { left: 55%; width: 35px; height: 35px; animation: float-heart 38s linear infinite; animation-delay: 10s; }
+        .heart-4 { left: 80%; width: 55px; height: 55px; animation: float-heart 32s linear infinite; animation-delay: 15s; }
+        .heart-5 { left: 15%; width: 65px; height: 65px; animation: float-heart 30s linear infinite; animation-delay: 20s; }
+        .heart-6 { left: 45%; width: 45px; height: 45px; animation: float-heart 36s linear infinite; animation-delay: 25s; }
+        .heart-7 { left: 70%; width: 75px; height: 75px; animation: float-heart 29s linear infinite; animation-delay: 30s; }
+        .heart-8 { left: 90%; width: 30px; height: 30px; animation: float-heart 40s linear infinite; animation-delay: 35s; }
+        .heart-9 { left: 5%; width: 48px; height: 48px; animation: float-heart 33s linear infinite; animation-delay: 40s; }
+        .heart-10 { left: 65%; width: 58px; height: 58px; animation: float-heart 31s linear infinite; animation-delay: 45s; }
 
         /* =========================================
            MAIN CONTAINER & COMMON STYLES
@@ -54,6 +115,8 @@
             flex-direction: column;
             gap: 15px;
             align-items: center;
+            position: relative;
+            z-index: 1; /* Stay in front of hearts */
         }
 
         /* Section Card (กล่องข้อมูล) */
@@ -379,6 +442,19 @@
 </head>
 <body>
 
+    <div class="background-hearts">
+        <div class="heart heart-1"></div>
+        <div class="heart heart-2"></div>
+        <div class="heart heart-3"></div>
+        <div class="heart heart-4"></div>
+        <div class="heart heart-5"></div>
+        <div class="heart heart-6"></div>
+        <div class="heart heart-7"></div>
+        <div class="heart heart-8"></div>
+        <div class="heart heart-9"></div>
+        <div class="heart heart-10"></div>
+    </div>
+
     <div class="container">
 
         <div class="header">
@@ -387,12 +463,12 @@
             <p class="welcome">Welcome To Hima Store</p>
             
             <div class="badges-container">
-                <div class="badge">✿  รับทำป้าย</div>
-                <div class="badge">✿  โลโก้ร้าน</div>
-                <div class="badge">✿  ลายน้ำ</div>
+                <div class="badge">✿ รับทำป้าย</div>
+                <div class="badge">✿ โลโก้ร้าน</div>
+                <div class="badge">✿ ลายน้ำ</div>
             </div>
             
-            <a href="https://ต้าเด่กโ์็ฮ.my.canva.site/hima-bio" target="_blank" class="btn-bubbly btn-outline-dashed">
+            <a href="#" target="_blank" class="btn-bubbly btn-outline-dashed">
                 <svg class="icon-check" viewBox="0 0 512 512" style="fill: #E889B5;"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg>
                 เช็คคิวงานฮิมะ
             </a>
@@ -426,7 +502,7 @@
                 </div>
             </div>
             
-            <a href="ลิงก์ของคุณ_เลือกของตกแต่ง" target="_blank" class="btn-bubbly btn-pink" style="margin-top: 25px;">
+            <a href="#" target="_blank" class="btn-bubbly btn-pink" style="margin-top: 25px;">
                 ✿ เลือกของตกแต่ง
             </a>
         </div>
@@ -436,7 +512,7 @@
                 🌷 ราคางานสั่งทำ
             </h2>
             
-            <a href="ลิงก์ของคุณ_เช็คราคาเพิ่มเติม" target="_blank" class="btn-bubbly btn-pink">
+            <a href="#" target="_blank" class="btn-bubbly btn-pink">
                 คลิกเลย ✿
             </a>
         </div>
@@ -550,17 +626,17 @@
         <div class="social-section">
             
             <div class="social-row">
-                <a href="ลิงก์_LINE_OA" target="_blank" class="social-btn-bubbly">
+                <a href="#" target="_blank" class="social-btn-bubbly">
                     <svg class="icon-mauve" viewBox="0 0 24 24"><path d="M12,2A10,10,0,0,0,2,12c0,5.5,4.5,10,10,10s10-4.5,10-10A10,10,0,0,0,12,2Zm5.5,14H6.5c-.3,0-.5-.2-.5-.5s.2-.5.5-.5h11c.3,0,.5.2,.5.5S17.8,16,17.5,16Zm0-3.5H6.5c-.3,0-.5-.2-.5-.5s.2-.5.5-.5h11c.3,0,.5.2,.5.5S17.8,12.5,17.5,12.5Zm0-3.5H6.5c-.3,0-.5-.2-.5-.5s.2-.5.5-.5h11c.3,0,.5.2,.5.5S17.8,9,17.5,9Z"/></svg>
                     LINE OA
                 </a>
                 
-                <a href="ลิงก์_FACEBOOK" target="_blank" class="social-btn-bubbly">
+                <a href="#" target="_blank" class="social-btn-bubbly">
                     <svg class="icon-mauve" viewBox="0 0 24 24"><path d="M12,2A10,10,0,0,0,2,12c0,5.5,4.5,10,10,10s10-4.5,10-10A10,10,0,0,0,12,2Zm4.5,10.5h-3v7h-3v-7h-2.5v-3H11v-2c0-1.1.9-2,2-2h1.5v3H13v1h3.5l-1,3Z"/></svg>
                     Facebook
                 </a>
                 
-                <a href="ลิงก์_INSTAGRAM" target="_blank" class="social-btn-bubbly">
+                <a href="#" target="_blank" class="social-btn-bubbly">
                     <svg class="icon-mauve" viewBox="0 0 24 24"><path d="M12,2A10,10,0,0,0,2,12c0,5.5,4.5,10,10,10s10-4.5,10-10A10,10,0,0,0,12,2Zm5,13.5A2.5,2.5,0,0,1,14.5,18H9.5A2.5,2.5,0,0,1,7,15.5V8.5A2.5,2.5,0,0,1,9.5,6h5A2.5,2.5,0,0,1,17,8.5Zm-5-8A3.5,3.5,0,1,0,15.5,11,3.5,3.5,0,0,0,12,7.5Zm0,5A1.5,1.5,0,1,1,13.5,11,1.5,1.5,0,0,1,12,12.5Z"/></svg>
                     Instagram
                 </a>
