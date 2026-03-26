@@ -101,6 +101,12 @@
             border: 1px solid #FFEBF3;
         }
 
+        /* ยกเว้น section ผลงานให้ padding น้อยลงจะได้สวยขึ้น */
+        .section.showcase-sec {
+            padding: 25px 0px 25px 20px; 
+            overflow: hidden;
+        }
+
         .section-title {
             color: var(--dark-pink);
             font-size: 20px;
@@ -111,6 +117,11 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+        }
+
+        /* สำหรับ section ที่แก้ padding ให้แก้ margin ของ title ด้วย */
+        .showcase-sec .section-title {
+            margin-right: 20px; 
         }
 
         /* =========================================
@@ -224,13 +235,46 @@
         .duration-note { font-size: 13px; color: var(--text-mauve-dark); background: #FFF5F9; padding: 12px 15px; border-radius: 12px; text-align: center; border: 1px dashed var(--main-pink); line-height: 1.5; margin-top: 5px; }
 
         /* =========================================
-           SHOWCASE SECTION 
+           SHOWCASE SECTION (ดีไซน์ใหม่แบบแนวนอน)
            ========================================= */
-        .showcase-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; width: 100%; }
-        .showcase-item { background-color: var(--white); border-radius: 15px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(232, 137, 181, 0.08); border: 1px solid #FFEBF3; }
-        .showcase-item img { width: 100%; height: auto; border-radius: 10px; object-fit: cover; border: 2px solid #FFF5F9; margin-bottom: 8px;}
-        .showcase-item h4 { color: var(--dark-pink); font-size: 16px; font-weight: 500; }
-        .showcase-item p { color: var(--text-mauve); font-size: 13px; }
+        .showcase-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
+            padding-bottom: 15px;
+            padding-right: 20px; /* ให้เลื่อนไปสุดมีพื้นที่เหลือ */
+            scrollbar-width: none; /* ซ่อน scrollbar ใน Firefox */
+            -ms-overflow-style: none; /* ซ่อน scrollbar ใน IE/Edge */
+        }
+
+        .showcase-scroll::-webkit-scrollbar {
+            display: none; /* ซ่อน scrollbar ใน Chrome/Safari/iOS */
+        }
+
+        .showcase-item {
+            flex: 0 0 140px; /* บังคับขนาดการ์ดไม่ให้ยืดหด */
+            background-color: var(--white);
+            border-radius: 16px;
+            padding: 12px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(232, 137, 181, 0.08);
+            border: 1px solid #FFEBF3;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .showcase-item img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover; /* ให้รูปเต็มกรอบสี่เหลี่ยม */
+            border-radius: 12px;
+            border: 2px solid #FFF5F9;
+            margin-bottom: 5px;
+        }
+
+        .showcase-item h4 { color: var(--dark-pink); font-size: 15px; font-weight: 500; }
+        .showcase-item p { color: var(--text-mauve); font-size: 12px; }
 
         /* =========================================
            BANK ACCOUNT SECTION 
@@ -315,6 +359,18 @@
 
         .icon-mauve { fill: var(--text-mauve); width: 18px; height: 18px; flex-shrink: 0; }
         .icon-check { width: 16px; height: 16px; }
+
+        /* ข้อความติ่งเล็กๆ บอกว่าปัดได้ */
+        .swipe-hint {
+            font-size: 12px;
+            color: var(--text-mauve);
+            text-align: right;
+            margin-right: 20px;
+            margin-top: -15px;
+            margin-bottom: 10px;
+            font-style: italic;
+            opacity: 0.8;
+        }
     </style>
 </head>
 <body>
@@ -392,7 +448,6 @@
             <h2 class="section-title">🌷 ระยะเวลารองาน</h2>
             
             <div class="duration-container-new">
-                
                 <div class="duration-box">
                     <div class="d-icon" style="color: var(--main-pink);">
                         <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
@@ -444,9 +499,11 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section showcase-sec">
             <h2 class="section-title">🌷 ผลงานร้านฮิมะ</h2>
-            <div class="showcase-grid">
+            <div class="swipe-hint">ปัดซ้ายขวาเพื่อดูผลงาน 👉</div>
+            
+            <div class="showcase-scroll">
                 <div class="showcase-item">
                     <img src="cute.jpg" alt="ผลงาน แวนหน้ารัก">
                     <h4>Cute</h4>
