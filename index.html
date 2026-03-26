@@ -18,6 +18,7 @@
             --text-mauve-dark: #C46793;
             --white: #FFFFFF;
             
+            /* กำหนดตัวแปรฟอนต์ตามที่ต้องการ */
             --font-thai: 'Mitr', sans-serif;
             --font-eng: 'Prompt', sans-serif;
         }
@@ -25,7 +26,8 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: var(--font-thai);
+            /* ใช้ Mitr เป็นฟอนต์หลักของเว็บ */
+            font-family: var(--font-thai); 
             background: linear-gradient(135deg, #FFEBF3 0%, #FFFFFF 100%);
             background-attachment: fixed;
             color: var(--dark-pink);
@@ -126,6 +128,7 @@
            ANIMATED GRADIENT TEXT
            ========================================= */
         .animated-gradient-text {
+            /* ให้ชื่อร้านภาษาอังกฤษใช้ฟอนต์ Prompt */
             font-family: var(--font-eng);
             font-size: 32px;
             font-weight: 600;
@@ -198,7 +201,9 @@
            ========================================= */
         .header { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 15px; width: 100%; margin-bottom: 10px; }
         .profile-img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 4px solid var(--white); box-shadow: 0 4px 10px rgba(232, 137, 181, 0.2); }
-        .header p.welcome { color: var(--text-mauve); font-size: 16px; margin-top: -5px; }
+        
+        /* ให้คำว่า Welcome ใช้ฟอนต์ Prompt */
+        .header p.welcome { font-family: var(--font-eng); color: var(--text-mauve); font-size: 16px; margin-top: -5px; }
 
         .badges-container { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 5px; }
         .badge { background-color: var(--white); color: var(--text-mauve-dark); border-radius: 20px; padding: 6px 16px; font-size: 14px; box-shadow: 0 2px 5px rgba(232, 137, 181, 0.1); display: flex; align-items: center; gap: 6px; border: 1px solid #FFEBF3;}
@@ -208,10 +213,12 @@
            ========================================= */
         .list-container { display: flex; flex-direction: column; gap: 12px; }
         .list-item { display: flex; align-items: flex-start; gap: 12px; color: var(--dark-pink); font-size: 15px; line-height: 1.6; }
-        .num-circle { background: linear-gradient(135deg, #FFA6C9, #F385B4); color: var(--white); width: 28px; height: 28px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 14px; font-weight: 600; flex-shrink: 0; box-shadow: 0 2px 6px rgba(243, 133, 180, 0.3); }
+        
+        /* ให้ตัวเลขใช้ฟอนต์ Prompt */
+        .num-circle { font-family: var(--font-eng); background: linear-gradient(135deg, #FFA6C9, #F385B4); color: var(--white); width: 28px; height: 28px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 14px; font-weight: 600; flex-shrink: 0; box-shadow: 0 2px 6px rgba(243, 133, 180, 0.3); }
 
         /* =========================================
-           PRICE LIST STYLES (รายการราคาแบบมินิมอล)
+           PRICE LIST STYLES 
            ========================================= */
         .price-list {
             display: flex;
@@ -239,6 +246,8 @@
             align-items: center;
             gap: 8px;
         }
+        
+        /* ให้ราคาใช้ฟอนต์ Prompt */
         .p-val {
             font-size: 14px;
             font-weight: 500;
@@ -267,8 +276,9 @@
         .d-title { font-size: 16px; font-weight: 600; color: var(--dark-pink); margin-bottom: 2px; }
         .d-sub { font-size: 13px; color: var(--text-mauve-dark); }
 
-        .d-price { background: linear-gradient(135deg, #FFA6C9, #F385B4); color: var(--white); padding: 6px 14px; border-radius: 20px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 8px rgba(243, 133, 180, 0.3); white-space: nowrap; }
-        .d-price.normal { background: transparent; color: var(--main-pink); border: 1px dashed var(--main-pink); box-shadow: none; }
+        /* ให้ราคาในระยะเวลาใช้ฟอนต์ Prompt */
+        .d-price { font-family: var(--font-eng); background: linear-gradient(135deg, #FFA6C9, #F385B4); color: var(--white); padding: 6px 14px; border-radius: 20px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 8px rgba(243, 133, 180, 0.3); white-space: nowrap; }
+        .d-price.normal { font-family: var(--font-thai); background: transparent; color: var(--main-pink); border: 1px dashed var(--main-pink); box-shadow: none; }
 
         .duration-note { font-size: 13px; color: var(--text-mauve-dark); background: #FFF5F9; padding: 12px 15px; border-radius: 12px; text-align: center; border: 1px dashed var(--main-pink); line-height: 1.5; margin-top: 5px; }
 
@@ -308,7 +318,8 @@
             margin-bottom: 5px;
         }
 
-        .showcase-item h4 { color: var(--dark-pink); font-size: 15px; font-weight: 500; }
+        /* ให้ชื่อภาษาอังกฤษใช้ Prompt */
+        .showcase-item h4 { font-family: var(--font-eng); color: var(--dark-pink); font-size: 15px; font-weight: 500; }
         .showcase-item p { color: var(--text-mauve); font-size: 12px; }
 
         .swipe-hint {
@@ -345,10 +356,12 @@
             justify-content: space-between;
         }
         
-        .bank-name { font-size: 14px; font-weight: 600; color: var(--dark-pink); margin-bottom: 2px;}
+        /* ให้ชื่อธนาคารภาษาอังกฤษใช้ Prompt */
+        .bank-name { font-family: var(--font-eng); font-size: 14px; font-weight: 600; color: var(--dark-pink); margin-bottom: 2px;}
         .acc-name { font-size: 12px; color: var(--text-mauve-dark); margin-bottom: 4px; }
         .acc-note { font-size: 11px; color: #ff6eb4; margin-bottom: 12px; }
         
+        /* ให้ตัวเลขใช้ Prompt */
         .acc-num {
             font-size: 14px; 
             font-weight: 600;
@@ -399,9 +412,13 @@
            ========================================= */
         .social-section { background-color: var(--white); border-radius: 20px; padding: 20px; width: 100%; box-shadow: 0 6px 20px rgba(232, 137, 181, 0.08); border: 1px solid #FFEBF3; margin-top: 10px; text-align: center; }
         .social-row { display: flex; gap: 12px; width: 100%; margin-bottom: 25px; }
-        .social-btn-bubbly { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 100%; padding: 15px; border-radius: 20px; text-decoration: none; font-weight: 400; font-size: 14px; color: var(--dark-pink); transition: all 0.3s ease; background-color: var(--white); box-shadow: 0 4px 12px rgba(232, 137, 181, 0.08); border: 1px solid #FFEBF3;}
+        
+        /* ให้ปุ่มภาษาอังกฤษใช้ Prompt */
+        .social-btn-bubbly { font-family: var(--font-eng); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 100%; padding: 15px; border-radius: 20px; text-decoration: none; font-weight: 400; font-size: 14px; color: var(--dark-pink); transition: all 0.3s ease; background-color: var(--white); box-shadow: 0 4px 12px rgba(232, 137, 181, 0.08); border: 1px solid #FFEBF3;}
         .social-btn-bubbly:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(232, 137, 181, 0.15); }
-        .footer-text { color: var(--text-mauve); font-size: 12px; margin-top: 10px; letter-spacing: 0.3px; }
+        
+        /* ให้ Footer ใช้ Prompt */
+        .footer-text { font-family: var(--font-eng); color: var(--text-mauve); font-size: 12px; margin-top: 10px; letter-spacing: 0.3px; }
 
         .icon-mauve { fill: var(--text-mauve); width: 18px; height: 18px; flex-shrink: 0; }
         .icon-check { width: 16px; height: 16px; }
@@ -485,7 +502,7 @@
                 </div>
                 <div class="price-item">
                     <div class="p-name"><span style="color:#F6A5C9;">✿</span> แนวADS</div>
-                    <div class="p-val">99 - 250.--</div>
+                    <div class="p-val">99 - 250.-</div>
                 </div>
                 <div class="price-item">
                     <div class="p-name"><span style="color:#F6A5C9;">✿</span>รายละเอียดเยอะ/ยาก</div>
@@ -597,7 +614,7 @@
             
             <div class="bank-cards-wrapper">
                 <div class="bank-card">
-                    <div class="bank-name">กสิกรไทย</div>
+                    <div class="bank-name">KBANK</div>
                     <div class="acc-name">คุณัญญา ก้านพลู</div>
                     <div class="acc-note">บัญชีนี้เท่านั้น ✅</div>
                     <div class="acc-num" id="kbank-num">0358209394</div>
