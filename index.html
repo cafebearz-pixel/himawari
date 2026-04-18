@@ -103,11 +103,6 @@
             border: 1px solid #FFEBF3;
         }
 
-        .section.showcase-sec {
-            padding: 25px 0px 25px 20px; 
-            overflow: hidden;
-        }
-
         .section-title {
             color: var(--dark-pink);
             font-size: 20px;
@@ -120,15 +115,10 @@
             gap: 8px;
         }
 
-        .showcase-sec .section-title {
-            margin-right: 20px; 
-        }
-
         /* =========================================
            ANIMATED GRADIENT TEXT
            ========================================= */
         .animated-gradient-text {
-            /* ให้ชื่อร้านภาษาอังกฤษใช้ฟอนต์ Prompt */
             font-family: var(--font-eng);
             font-size: 32px;
             font-weight: 600;
@@ -201,10 +191,7 @@
            ========================================= */
         .header { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 15px; width: 100%; margin-bottom: 10px; }
         .profile-img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 4px solid var(--white); box-shadow: 0 4px 10px rgba(232, 137, 181, 0.2); }
-        
-        /* ให้คำว่า Welcome ใช้ฟอนต์ Prompt */
         .header p.welcome { font-family: var(--font-eng); color: var(--text-mauve); font-size: 16px; margin-top: -5px; }
-
         .badges-container { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 5px; }
         .badge { background-color: var(--white); color: var(--text-mauve-dark); border-radius: 20px; padding: 6px 16px; font-size: 14px; box-shadow: 0 2px 5px rgba(232, 137, 181, 0.1); display: flex; align-items: center; gap: 6px; border: 1px solid #FFEBF3;}
 
@@ -213,8 +200,6 @@
            ========================================= */
         .list-container { display: flex; flex-direction: column; gap: 12px; }
         .list-item { display: flex; align-items: flex-start; gap: 12px; color: var(--dark-pink); font-size: 15px; line-height: 1.6; }
-        
-        /* ให้ตัวเลขใช้ฟอนต์ Prompt */
         .num-circle { font-family: var(--font-eng); background: linear-gradient(135deg, #FFA6C9, #F385B4); color: var(--white); width: 28px; height: 28px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 14px; font-weight: 600; flex-shrink: 0; box-shadow: 0 2px 6px rgba(243, 133, 180, 0.3); }
 
         /* =========================================
@@ -229,35 +214,10 @@
             padding: 10px 15px;
             border: 1px solid #FFEBF3;
         }
-        .price-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 5px;
-            border-bottom: 1px dashed #F6A5C9; 
-        }
-        .price-item:last-child {
-            border-bottom: none; 
-        }
-        .p-name {
-            font-size: 15px;
-            color: var(--dark-pink);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        /* ให้ราคาใช้ฟอนต์ Prompt */
-        .p-val {
-            font-size: 14px;
-            font-weight: 500;
-            font-family: var(--font-eng);
-            color: var(--main-pink);
-            background: var(--white);
-            padding: 4px 14px;
-            border-radius: 20px;
-            box-shadow: 0 2px 6px rgba(232, 137, 181, 0.1); 
-        }
+        .price-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 5px; border-bottom: 1px dashed #F6A5C9; }
+        .price-item:last-child { border-bottom: none; }
+        .p-name { font-size: 15px; color: var(--dark-pink); display: flex; align-items: center; gap: 8px; }
+        .p-val { font-size: 14px; font-weight: 500; font-family: var(--font-eng); color: var(--main-pink); background: var(--white); padding: 4px 14px; border-radius: 20px; box-shadow: 0 2px 6px rgba(232, 137, 181, 0.1); }
 
         /* =========================================
            DURATION STYLES
@@ -276,7 +236,6 @@
         .d-title { font-size: 16px; font-weight: 600; color: var(--dark-pink); margin-bottom: 2px; }
         .d-sub { font-size: 13px; color: var(--text-mauve-dark); }
 
-        /* ให้ราคาในระยะเวลาใช้ฟอนต์ Prompt */
         .d-price { font-family: var(--font-eng); background: linear-gradient(135deg, #FFA6C9, #F385B4); color: var(--white); padding: 6px 14px; border-radius: 20px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 8px rgba(243, 133, 180, 0.3); white-space: nowrap; }
         .d-price.normal { font-family: var(--font-thai); background: transparent; color: var(--main-pink); border: 1px dashed var(--main-pink); box-shadow: none; }
 
@@ -308,95 +267,29 @@
             margin-bottom: 5px;
         }
 
-        /* ให้ชื่อภาษาอังกฤษใช้ Prompt */
         .showcase-item h4 { font-family: var(--font-eng); color: var(--dark-pink); font-size: 15px; font-weight: 500; }
         .showcase-item p { color: var(--text-mauve); font-size: 12px; }
 
         /* =========================================
            BANK ACCOUNT SECTION 
            ========================================= */
-        .bank-cards-wrapper {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            width: 100%;
-            margin-bottom: 15px;
-        }
-
-        .bank-card {
-            background: linear-gradient(to bottom right, #ffffff, #FFF0F6);
-            border-radius: 16px;
-            padding: 15px 10px;
-            box-shadow: 0 4px 12px rgba(232, 137, 181, 0.08);
-            border: 1px solid var(--main-pink);
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        
-        /* ให้ชื่อธนาคารภาษาอังกฤษใช้ Prompt */
+        .bank-cards-wrapper { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; margin-bottom: 15px; }
+        .bank-card { background: linear-gradient(to bottom right, #ffffff, #FFF0F6); border-radius: 16px; padding: 15px 10px; box-shadow: 0 4px 12px rgba(232, 137, 181, 0.08); border: 1px solid var(--main-pink); text-align: center; display: flex; flex-direction: column; justify-content: space-between; }
         .bank-name { font-family: var(--font-eng); font-size: 14px; font-weight: 600; color: var(--dark-pink); margin-bottom: 2px;}
         .acc-name { font-size: 12px; color: var(--text-mauve-dark); margin-bottom: 4px; }
         .acc-note { font-size: 11px; color: #ff6eb4; margin-bottom: 12px; }
-        
-        /* ให้ตัวเลขใช้ Prompt */
-        .acc-num {
-            font-size: 14px; 
-            font-weight: 600;
-            font-family: var(--font-eng);
-            color: #905D4A; 
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-            background: var(--white);
-            padding: 6px 8px;
-            border-radius: 10px;
-            display: inline-block;
-            border: 1px dashed #905D4A;
-        }
-
-        .copy-btn {
-            background: linear-gradient(135deg, #FFA6C9, #F385B4);
-            color: var(--white);
-            border: none;
-            padding: 8px 10px;
-            border-radius: 50px;
-            font-size: 12px;
-            font-family: var(--font-thai);
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(243, 133, 180, 0.3);
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-            width: 100%; 
-        }
-        
+        .acc-num { font-size: 14px; font-weight: 600; font-family: var(--font-eng); color: #905D4A; letter-spacing: 1px; margin-bottom: 12px; background: var(--white); padding: 6px 8px; border-radius: 10px; display: inline-block; border: 1px dashed #905D4A; }
+        .copy-btn { background: linear-gradient(135deg, #FFA6C9, #F385B4); color: var(--white); border: none; padding: 8px 10px; border-radius: 50px; font-size: 12px; font-family: var(--font-thai); cursor: pointer; box-shadow: 0 4px 10px rgba(243, 133, 180, 0.3); transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 4px; width: 100%; }
         .copy-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(243, 133, 180, 0.4); }
-
-        .payment-warning {
-            font-size: 13px;
-            color: var(--text-mauve-dark);
-            background: #FFF5F9;
-            padding: 15px;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px dashed var(--main-pink);
-            line-height: 1.6;
-        }
+        .payment-warning { font-size: 13px; color: var(--text-mauve-dark); background: #FFF5F9; padding: 15px; border-radius: 12px; text-align: center; border: 1px dashed var(--main-pink); line-height: 1.6; }
 
         /* =========================================
            SOCIAL SECTION 
            ========================================= */
         .social-section { background-color: var(--white); border-radius: 20px; padding: 20px; width: 100%; box-shadow: 0 6px 20px rgba(232, 137, 181, 0.08); border: 1px solid #FFEBF3; margin-top: 10px; text-align: center; }
         .social-row { display: flex; gap: 12px; width: 100%; margin-bottom: 25px; }
-        
-        /* ให้ปุ่มภาษาอังกฤษใช้ Prompt */
         .social-btn-bubbly { font-family: var(--font-eng); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 100%; padding: 15px; border-radius: 20px; text-decoration: none; font-weight: 400; font-size: 14px; color: var(--dark-pink); transition: all 0.3s ease; background-color: var(--white); box-shadow: 0 4px 12px rgba(232, 137, 181, 0.08); border: 1px solid #FFEBF3;}
         .social-btn-bubbly:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(232, 137, 181, 0.15); }
-        
-        /* ให้ Footer ใช้ Prompt */
         .footer-text { font-family: var(--font-eng); color: var(--text-mauve); font-size: 12px; margin-top: 10px; letter-spacing: 0.3px; }
 
         .icon-mauve { fill: var(--text-mauve); width: 18px; height: 18px; flex-shrink: 0; }
@@ -489,7 +382,7 @@
                 </div>
             </div>
             
-            </div>
+        </div>
 
         <div class="section">
             <h2 class="section-title">🌷 ระยะเวลารองาน</h2>
@@ -552,32 +445,32 @@
             
             <div class="showcase-grid">
                 <div class="showcase-item">
-                    <img src="cute.jpg" alt="ผลงาน แวนหน้ารัก">
+                    <img src="cute.PNG" alt="ผลงาน แวนหน้ารัก">
                     <h4>Cute</h4>
                     <p>แนวน่ารัก</p>
                 </div>
                 <div class="showcase-item">
-                    <img src="aurora.jpg" alt="ผลงาน แนวออโรร่า">
+                    <img src="aurora.PNG" alt="ผลงาน แนวออโรร่า">
                     <h4>Aurora</h4>
                     <p>แนวออโรร่า</p>
                 </div>
                 <div class="showcase-item">
-                    <img src="pearlwave.jpg" alt="ผลงาน แนวเซ็ทเวฟ">
+                    <img src="pealwave.PNG" alt="ผลงาน แนวเซ็ทเวฟ">
                     <h4>Pearlwave</h4>
                     <p>แนวเพิร์ลเวฟ</p>
                 </div>
                 <div class="showcase-item">
-                    <img src="game.jpg" alt="ผลงาน แนวเกม/ทางกร">
+                    <img src="ads.PNG" alt="ผลงาน แนวเกม/ทางกร">
                     <h4>ADS</h4>
                     <p>แนวเกม/ทางการ</p>
                 </div>
                 <div class="showcase-item">
-                    <img src="logo.jpg" alt="ผลงาน โลโก้/ลายน้ำ">
+                    <img src="logo.PNG" alt="ผลงาน โลโก้/ลายน้ำ">
                     <h4>Logo</h4>
                     <p>โลโก้/ลายน้ำ</p>
                 </div>
                 <div class="showcase-item">
-                    <img src="cf.jpg" alt="ผลงาน รอจ่าย24ชม.">
+                    <img src="cf.PNG" alt="ผลงาน รอจ่าย24ชม.">
                     <h4>CF 24 ชม.</h4>
                     <p>รองาน24ชม.</p>
                 </div>
