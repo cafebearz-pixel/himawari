@@ -18,7 +18,6 @@
             --text-mauve-dark: #C46793;
             --white: #FFFFFF;
             
-            /* กำหนดตัวแปรฟอนต์ตามที่ต้องการ */
             --font-thai: 'Mitr', sans-serif;
             --font-eng: 'Prompt', sans-serif;
         }
@@ -26,7 +25,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            /* ใช้ Mitr เป็นฟอนต์หลักของเว็บ */
             font-family: var(--font-thai); 
             background: linear-gradient(135deg, #FFEBF3 0%, #FFFFFF 100%);
             background-attachment: fixed;
@@ -246,6 +244,8 @@
            ========================================= */
         .showcase-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; width: 100%; }
         
+        .showcase-link { text-decoration: none; transition: all 0.3s ease; }
+        
         .showcase-item { 
             background-color: var(--white); 
             border-radius: 16px; 
@@ -256,6 +256,7 @@
             display: flex;
             flex-direction: column;
             gap: 5px;
+            height: 100%;
         }
         
         .showcase-item img { 
@@ -267,8 +268,14 @@
             margin-bottom: 5px;
         }
 
+        .showcase-link:hover .showcase-item {
+            transform: translateY(-5px);
+            border-color: var(--main-pink);
+            box-shadow: 0 8px 20px rgba(232, 137, 181, 0.15);
+        }
+
         .showcase-item h4 { font-family: var(--font-eng); color: var(--dark-pink); font-size: 15px; font-weight: 500; }
-        .showcase-item p { color: var(--text-mauve); font-size: 12px; }
+        .showcase-item p { font-family: var(--font-thai); color: var(--text-mauve); font-size: 12px; }
 
         /* =========================================
            BANK ACCOUNT SECTION 
@@ -381,7 +388,6 @@
                     <div class="p-val">มีบวกเพิ่ม</div>
                 </div>
             </div>
-            
         </div>
 
         <div class="section">
@@ -444,36 +450,53 @@
             <h2 class="section-title">🌷 ผลงานร้านฮิมะ</h2>
             
             <div class="showcase-grid">
-                <div class="showcase-item">
-                    <img src="cute.PNG" alt="ผลงาน แวนหน้ารัก">
-                    <h4>Cute</h4>
-                    <p>แนวน่ารัก</p>
-                </div>
-                <div class="showcase-item">
-                    <img src="aurora.PNG" alt="ผลงาน แนวออโรร่า">
-                    <h4>Aurora</h4>
-                    <p>แนวออโรร่า</p>
-                </div>
-                <div class="showcase-item">
-                    <img src="pealwave.PNG" alt="ผลงาน แนวเซ็ทเวฟ">
-                    <h4>Pearlwave</h4>
-                    <p>แนวเพิร์ลเวฟ</p>
-                </div>
-                <div class="showcase-item">
-                    <img src="ads.PNG" alt="ผลงาน แนวเกม/ทางกร">
-                    <h4>ADS</h4>
-                    <p>แนวเกม/ทางการ</p>
-                </div>
-                <div class="showcase-item">
-                    <img src="logo.PNG" alt="ผลงาน โลโก้/ลายน้ำ">
-                    <h4>Logo</h4>
-                    <p>โลโก้/ลายน้ำ</p>
-                </div>
-                <div class="showcase-item">
-                    <img src="cf.PNG" alt="ผลงาน รอจ่าย24ชม.">
-                    <h4>CF 24 ชม.</h4>
-                    <p>รองาน24ชม.</p>
-                </div>
+                <a href="https://drive.google.com/drive/folders/1iCJoITdkAIy0YyIN2cGP2oY_boskefSB" target="_blank" class="showcase-link">
+                    <div class="showcase-item">
+                        <img src="cute.PNG" alt="ผลงาน แวนหน้ารัก">
+                        <h4>Cute</h4>
+                        <p>แนวน่ารัก</p>
+                    </div>
+                </a>
+
+                <a href="https://drive.google.com/drive/folders/1lHXXeLsHyFte6gBxzd8fBYZ9oRCMtE8a" target="_blank" class="showcase-link">
+                    <div class="showcase-item">
+                        <img src="aurora.PNG" alt="ผลงาน แนวออโรร่า">
+                        <h4>Aurora</h4>
+                        <p>แนวออโรร่า</p>
+                    </div>
+                </a>
+
+                <a href="https://drive.google.com/drive/folders/1lWey7mwXS9jjsZVfM_7HI8ijkdxYqRbG" target="_blank" class="showcase-link">
+                    <div class="showcase-item">
+                        <img src="pealwave.PNG" alt="ผลงาน แนวเซ็ทเวฟ">
+                        <h4>Pearlwave</h4>
+                        <p>แนวเพิร์ลเวฟ</p>
+                    </div>
+                </a>
+
+                <a href="https://drive.google.com/drive/folders/1CLxQT8kMLcJZEfde_wL5GodRRgqV9MLV" target="_blank" class="showcase-link">
+                    <div class="showcase-item">
+                        <img src="ads.PNG" alt="ผลงาน แนวเกม/ทางกร">
+                        <h4>ADS</h4>
+                        <p>แนวเกม/ทางการ</p>
+                    </div>
+                </a>
+
+                <a href="https://drive.google.com/drive/folders/11rVarBy_nS83IpsclyYLucJuSoluyGOa" target="_blank" class="showcase-link">
+                    <div class="showcase-item">
+                        <img src="logo.PNG" alt="ผลงาน โลโก้/ลายน้ำ">
+                        <h4>Logo</h4>
+                        <p>โลโก้/ลายน้ำ</p>
+                    </div>
+                </a>
+
+                <a href="https://drive.google.com/drive/folders/1T5DQC8dY22KFPtSL9I-ptTTFW19v2Hon" target="_blank" class="showcase-link">
+                    <div class="showcase-item">
+                        <img src="cf.PNG" alt="ผลงาน รอจ่าย24ชม.">
+                        <h4>CF 24 ชม.</h4>
+                        <p>รองาน24ชม.</p>
+                    </div>
+                </a>
             </div>
         </div>
 
