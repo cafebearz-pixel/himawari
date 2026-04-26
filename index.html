@@ -1,213 +1,604 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Himawari</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <title>Himawari - Made with ♡</title>
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* =========================================
+           CSS VARIABLES & RESET 
+           ========================================= */
+        :root {
+            --bg-color: #FFF0F6;
+            --main-pink: #F6A5C9;
+            --dark-pink: #E889B5;
+            --text-mauve: #E889B5;
+            --text-mauve-dark: #C46793;
+            --white: #FFFFFF;
+            
+            --font-thai: 'Mitr', sans-serif;
+            --font-eng: 'Prompt', sans-serif;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: var(--font-thai); 
+            background: linear-gradient(135deg, #FFEBF3 0%, #FFFFFF 100%);
+            background-attachment: fixed;
+            color: var(--dark-pink);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 30px 15px 50px;
+            overflow-x: hidden;
+        }
 
-<style>
-:root {
-    --bg-color: #F8F3F2;
-    --main-pink: #E8CCD7;
-    --dark-pink: #B48F91;
-    --text-mauve: #B48F91;
-    --text-mauve-dark: #8F7072;
-    --soft-beige: #DDD5D3;
-    --dusty: #CFC1C1;
-    --white: #FFFFFF;
+        /* =========================================
+           BACKGROUND HEARTS
+           ========================================= */
+        .background-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
 
-    --font-thai: 'Mitr', sans-serif;
-    --font-eng: 'Prompt', sans-serif;
-}
+        .heart {
+            position: absolute;
+            background-image: url('heart.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.85; 
+            animation: float-around ease-in-out infinite; 
+        }
 
-* { margin:0; padding:0; box-sizing:border-box; }
+        @keyframes float-around {
+            0% { transform: translateY(0) translateX(0) scale(1); }
+            33% { transform: translateY(-30px) translateX(20px) scale(1.1); }
+            66% { transform: translateY(20px) translateX(-20px) scale(0.9); }
+            100% { transform: translateY(0) translateX(0) scale(1); }
+        }
 
-body {
-    font-family: var(--font-thai);
-    background: linear-gradient(135deg,#F8F3F2,#FFFFFF);
-    color: var(--dark-pink);
-    display:flex;
-    justify-content:center;
-    padding:30px 15px;
-}
+        .heart-1 { top: 10%; left: 10%; width: 50px; height: 50px; animation-duration: 18s; }
+        .heart-2 { top: 75%; left: 85%; width: 65px; height: 65px; animation-duration: 22s; }
+        .heart-3 { top: 40%; left: 20%; width: 40px; height: 40px; animation-duration: 16s; animation-delay: -5s; }
+        .heart-4 { top: 85%; left: 25%; width: 55px; height: 55px; animation-duration: 24s; animation-delay: -2s; }
+        .heart-5 { top: 25%; left: 80%; width: 45px; height: 45px; animation-duration: 20s; animation-delay: -7s; }
+        .heart-6 { top: 55%; left: 85%; width: 60px; height: 60px; animation-duration: 26s; animation-delay: -3s; }
+        .heart-7 { top: 15%; left: 60%; width: 70px; height: 70px; animation-duration: 25s; animation-delay: -8s; }
+        .heart-8 { top: 35%; left: 50%; width: 35px; height: 35px; animation-duration: 17s; animation-delay: -4s; }
+        .heart-9 { top: 65%; left: 10%; width: 55px; height: 55px; animation-duration: 23s; animation-delay: -9s; }
+        .heart-10 { top: 5%; left: 35%; width: 40px; height: 40px; animation-duration: 19s; animation-delay: -1s; }
 
-.container {
-    max-width:500px;
-    width:100%;
-    display:flex;
-    flex-direction:column;
-    gap:15px;
-}
+        /* =========================================
+           MAIN CONTAINER & COMMON STYLES
+           ========================================= */
+        .container {
+            max-width: 500px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
 
-/* SECTION */
-.section {
-    background: var(--white);
-    border-radius:20px;
-    padding:20px;
-    border:1px solid var(--soft-beige);
-    box-shadow:0 5px 15px rgba(0,0,0,0.04);
-}
+        .section {
+            background-color: var(--white);
+            border-radius: 20px;
+            padding: 25px 20px;
+            width: 100%;
+            box-shadow: 0 6px 20px rgba(232, 137, 181, 0.08); 
+            border: 1px solid #FFEBF3;
+        }
 
-.section-title {
-    text-align:center;
-    font-weight:600;
-    margin-bottom:15px;
-}
+        .section-title {
+            color: var(--dark-pink);
+            font-size: 20px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
 
-/* HEADER */
-.header { text-align:center; }
+        /* =========================================
+           ANIMATED GRADIENT TEXT
+           ========================================= */
+        .animated-gradient-text {
+            font-family: var(--font-eng);
+            font-size: 32px;
+            font-weight: 600;
+            background: linear-gradient(45deg, #F6A5C9, #E889B5, #FFC1D9, #F6A5C9);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-shift 4s ease infinite; 
+        }
 
-.profile-img {
-    width:130px;
-    height:130px;
-    border-radius:50%;
-    object-fit:cover;
-    border:4px solid var(--white);
-}
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-.animated-gradient-text {
-    font-family: var(--font-eng);
-    font-size:28px;
-    background: linear-gradient(45deg,#E8CCD7,#CFC1C1,#DDD5D3);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
+        /* =========================================
+           BUTTON STYLES 
+           ========================================= */
+        .btn-bubbly {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
+            border: none;
+        }
 
-/* BUTTON */
-.btn {
-    padding:14px;
-    border-radius:50px;
-    border:none;
-    cursor:pointer;
-    text-decoration:none;
-    display:block;
-    text-align:center;
-}
+        .btn-pink { 
+            background: linear-gradient(135deg, #FFA6C9 0%, #F385B4 100%);
+            color: var(--white); 
+            box-shadow: 0 8px 20px rgba(243, 133, 180, 0.35); 
+            border: 1px solid rgba(255, 255, 255, 0.4); 
+        }
+        
+        .btn-pink:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(243, 133, 180, 0.5); 
+        }
 
-.btn-main {
-    background: linear-gradient(135deg,#E8CCD7,#CFC1C1);
-    color:white;
-}
+        .btn-outline-dashed { 
+            background-color: var(--white); 
+            color: var(--dark-pink); 
+            border: 2px dashed #F6A5C9; 
+            box-shadow: 0 4px 15px rgba(232, 137, 181, 0.08);
+            animation: pulse-btn 2s infinite ease-in-out; 
+        }
 
-.btn-outline {
-    border:2px dashed var(--main-pink);
-    color:var(--dark-pink);
-}
+        .btn-outline-dashed:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(232, 137, 181, 0.15);
+            animation-play-state: paused; 
+        }
 
-/* LIST */
-.list-item {
-    display:flex;
-    gap:10px;
-    margin-bottom:10px;
-}
+        @keyframes pulse-btn {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
 
-.num-circle {
-    background:var(--main-pink);
-    color:white;
-    width:25px;
-    height:25px;
-    border-radius:50%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
+        /* =========================================
+           HEADER SECTION 
+           ========================================= */
+        .header { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 15px; width: 100%; margin-bottom: 10px; }
+        .profile-img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 4px solid var(--white); box-shadow: 0 4px 10px rgba(232, 137, 181, 0.2); }
+        .header p.welcome { font-family: var(--font-eng); color: var(--text-mauve); font-size: 16px; margin-top: -5px; }
+        .badges-container { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 5px; }
+        .badge { background-color: var(--white); color: var(--text-mauve-dark); border-radius: 20px; padding: 6px 16px; font-size: 14px; box-shadow: 0 2px 5px rgba(232, 137, 181, 0.1); display: flex; align-items: center; gap: 6px; border: 1px solid #FFEBF3;}
 
-/* PRICE */
-.price-item {
-    display:flex;
-    justify-content:space-between;
-    padding:10px 0;
-    border-bottom:1px dashed var(--soft-beige);
-}
+        /* =========================================
+           LISTS
+           ========================================= */
+        .list-container { display: flex; flex-direction: column; gap: 12px; }
+        .list-item { display: flex; align-items: flex-start; gap: 12px; color: var(--dark-pink); font-size: 15px; line-height: 1.6; }
+        .num-circle { font-family: var(--font-eng); background: linear-gradient(135deg, #FFA6C9, #F385B4); color: var(--white); width: 28px; height: 28px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 14px; font-weight: 600; flex-shrink: 0; box-shadow: 0 2px 6px rgba(243, 133, 180, 0.3); }
 
-/* CARD */
-.card {
-    background: linear-gradient(to right,#fff,#F8F3F2);
-    padding:15px;
-    border-radius:15px;
-    border:1px solid var(--soft-beige);
-}
+        /* =========================================
+           PRICE LIST STYLES 
+           ========================================= */
+        .price-list {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            background: #FFFcfd; 
+            border-radius: 16px;
+            padding: 10px 15px;
+            border: 1px solid #FFEBF3;
+        }
+        .price-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 5px; border-bottom: 1px dashed #F6A5C9; }
+        .price-item:last-child { border-bottom: none; }
+        .p-name { font-size: 15px; color: var(--dark-pink); display: flex; align-items: center; gap: 8px; }
+        .p-val { font-size: 14px; font-weight: 500; font-family: var(--font-eng); color: var(--main-pink); background: var(--white); padding: 4px 14px; border-radius: 20px; box-shadow: 0 2px 6px rgba(232, 137, 181, 0.1); }
 
-/* BANK */
-.bank {
-    text-align:center;
-    padding:15px;
-    border-radius:15px;
-    border:1px solid var(--main-pink);
-}
+        /* =========================================
+           DURATION STYLES
+           ========================================= */
+        .duration-container-new { display: flex; flex-direction: column; gap: 12px; }
+        .duration-box { display: flex; align-items: center; background: var(--white); border-radius: 16px; padding: 16px; box-shadow: 0 4px 12px rgba(232, 137, 181, 0.08); border: 1px solid #FFEBF3; transition: transform 0.2s; }
+        .duration-box.fast { background: linear-gradient(to right, #ffffff, #FFF0F6); border-color: var(--main-pink); }
+        .duration-box.super-fast { background: linear-gradient(to right, #ffffff, #FFE4F0); border-color: #FF8FBA; }
+        .duration-box:hover { transform: translateY(-2px); }
 
-/* SOCIAL */
-.social {
-    display:flex;
-    gap:10px;
-}
+        .d-icon { width: 44px; height: 44px; display: flex; justify-content: center; align-items: center; background: #FFF5F9; border-radius: 50%; margin-right: 15px; flex-shrink: 0; box-shadow: inset 0 2px 4px rgba(232, 137, 181, 0.1); }
+        .duration-box.fast .d-icon { background: #FFE4F0; }
+        .duration-box.super-fast .d-icon { background: #FFD6E8; }
 
-.social a {
-    flex:1;
-    padding:12px;
-    border-radius:15px;
-    text-align:center;
-    border:1px solid var(--soft-beige);
-}
-</style>
+        .d-details { flex-grow: 1; display: flex; flex-direction: column; }
+        .d-title { font-size: 16px; font-weight: 600; color: var(--dark-pink); margin-bottom: 2px; }
+        .d-sub { font-size: 13px; color: var(--text-mauve-dark); }
+
+        .d-price { font-family: var(--font-eng); background: linear-gradient(135deg, #FFA6C9, #F385B4); color: var(--white); padding: 6px 14px; border-radius: 20px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 8px rgba(243, 133, 180, 0.3); white-space: nowrap; }
+        .d-price.normal { font-family: var(--font-thai); background: transparent; color: var(--main-pink); border: 1px dashed var(--main-pink); box-shadow: none; }
+
+        .duration-note { font-size: 13px; color: var(--text-mauve-dark); background: #FFF5F9; padding: 12px 15px; border-radius: 12px; text-align: center; border: 1px dashed var(--main-pink); line-height: 1.5; margin-top: 5px; }
+
+        /* =========================================
+           SHOWCASE SECTION (แบบตาราง Grid)
+           ========================================= */
+        .showcase-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; width: 100%; }
+        
+        .showcase-link { text-decoration: none; transition: all 0.3s ease; }
+        
+        .showcase-item { 
+            background-color: var(--white); 
+            border-radius: 16px; 
+            padding: 12px; 
+            text-align: center; 
+            box-shadow: 0 4px 10px rgba(232, 137, 181, 0.08); 
+            border: 1px solid #FFEBF3; 
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            height: 100%;
+        }
+        
+        .showcase-item img { 
+            width: 100%; 
+            height: auto; 
+            border-radius: 12px; 
+            object-fit: cover; 
+            border: 2px solid #FFF5F9; 
+            margin-bottom: 5px;
+        }
+
+        .showcase-link:hover .showcase-item {
+            transform: translateY(-5px);
+            border-color: var(--main-pink);
+            box-shadow: 0 8px 20px rgba(232, 137, 181, 0.15);
+        }
+
+        .showcase-item h4 { font-family: var(--font-eng); color: var(--dark-pink); font-size: 15px; font-weight: 500; }
+        .showcase-item p { font-family: var(--font-thai); color: var(--text-mauve); font-size: 12px; }
+
+        /* =========================================
+           BANK ACCOUNT SECTION 
+           ========================================= */
+        .bank-cards-wrapper { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; margin-bottom: 15px; }
+        .bank-card { background: linear-gradient(to bottom right, #ffffff, #FFF0F6); border-radius: 16px; padding: 15px 10px; box-shadow: 0 4px 12px rgba(232, 137, 181, 0.08); border: 1px solid var(--main-pink); text-align: center; display: flex; flex-direction: column; justify-content: space-between; }
+        .bank-name { font-family: var(--font-eng); font-size: 14px; font-weight: 600; color: var(--dark-pink); margin-bottom: 2px;}
+        .acc-name { font-size: 12px; color: var(--text-mauve-dark); margin-bottom: 4px; }
+        .acc-note { font-size: 11px; color: #ff6eb4; margin-bottom: 12px; }
+        .acc-num { font-size: 14px; font-weight: 600; font-family: var(--font-eng); color: #905D4A; letter-spacing: 1px; margin-bottom: 12px; background: var(--white); padding: 6px 8px; border-radius: 10px; display: inline-block; border: 1px dashed #905D4A; }
+        .copy-btn { background: linear-gradient(135deg, #FFA6C9, #F385B4); color: var(--white); border: none; padding: 8px 10px; border-radius: 50px; font-size: 12px; font-family: var(--font-thai); cursor: pointer; box-shadow: 0 4px 10px rgba(243, 133, 180, 0.3); transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 4px; width: 100%; }
+        .copy-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(243, 133, 180, 0.4); }
+        .payment-warning { font-size: 13px; color: var(--text-mauve-dark); background: #FFF5F9; padding: 15px; border-radius: 12px; text-align: center; border: 1px dashed var(--main-pink); line-height: 1.6; }
+
+        /* =========================================
+           SOCIAL SECTION 
+           ========================================= */
+        .social-section { background-color: var(--white); border-radius: 20px; padding: 20px; width: 100%; box-shadow: 0 6px 20px rgba(232, 137, 181, 0.08); border: 1px solid #FFEBF3; margin-top: 10px; text-align: center; }
+        .social-row { display: flex; gap: 12px; width: 100%; margin-bottom: 25px; }
+        .social-btn-bubbly { font-family: var(--font-eng); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 100%; padding: 15px; border-radius: 20px; text-decoration: none; font-weight: 400; font-size: 14px; color: var(--dark-pink); transition: all 0.3s ease; background-color: var(--white); box-shadow: 0 4px 12px rgba(232, 137, 181, 0.08); border: 1px solid #FFEBF3;}
+        .social-btn-bubbly:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(232, 137, 181, 0.15); }
+        .footer-text { font-family: var(--font-eng); color: var(--text-mauve); font-size: 12px; margin-top: 10px; letter-spacing: 0.3px; }
+
+        .icon-mauve { fill: var(--text-mauve); width: 18px; height: 18px; flex-shrink: 0; }
+        .icon-check { width: 16px; height: 16px; }
+    </style>
 </head>
-
 <body>
 
-<div class="container">
+    <div class="background-hearts">
+        <div class="heart heart-1"></div>
+        <div class="heart heart-2"></div>
+        <div class="heart heart-3"></div>
+        <div class="heart heart-4"></div>
+        <div class="heart heart-5"></div>
+        <div class="heart heart-6"></div>
+        <div class="heart heart-7"></div>
+        <div class="heart heart-8"></div>
+        <div class="heart heart-9"></div>
+        <div class="heart heart-10"></div>
+    </div>
 
-<div class="header">
-<img src="pfp.png" class="profile-img">
-<h1 class="animated-gradient-text">Himawari</h1>
-<p>Welcome To Hima Store</p>
+    <div class="container">
 
-<a class="btn btn-outline">เช็คคิวงาน</a>
-</div>
+        <div class="header">
+            <img src="pfp.png" alt="Profile" class="profile-img">
+            <h1 class="animated-gradient-text">Himawari</h1>
+            <p class="welcome">Welcome To Hima Store</p>
+            
+            <div class="badges-container">
+                <div class="badge">✿ รับทำป้าย</div>
+                <div class="badge">✿ โลโก้ร้าน</div>
+                <div class="badge">✿ ลายน้ำ</div>
+            </div>
+            
+            <a href="https://ksm-bb.github.io/hima-check-q/" target="_blank" class="btn-bubbly btn-outline-dashed">
+                <svg class="icon-check" viewBox="0 0 512 512" style="fill: #E889B5;"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"/></svg>
+                เช็คคิวงานฮิมะ
+            </a>
+        </div>
 
-<div class="section">
-<h2 class="section-title">ขั้นตอน</h2>
+        <div class="section">
+            <h2 class="section-title">🌷 ขั้นตอนสั่งงาน</h2>
+            <div class="list-container">
+                <div class="list-item">
+                    <div class="num-circle">1</div>
+                    <div>แจ้งประเภทและแนวงานที่จะสั่งทำ</div>
+                </div>
+                <div class="list-item">
+                    <div class="num-circle">2</div>
+                    <div>เลือกของทำป้ายแคปส่งให้ร้าน</div>
+                </div>
+                <div class="list-item">
+                    <div class="num-circle">3</div>
+                    <div>บรีฟงานให้ละเอียด เช็คความถูกต้องให้ดี</div>
+                </div>
+                <div class="list-item">
+                    <div class="num-circle">4</div>
+                    <div>ชำระเงินส่งสลิปและแจ้งชื่อเล่นเพื่อลงคิว</div>
+                </div>
+                <div class="list-item">
+                    <div class="num-circle">5</div>
+                    <div>รอร้านลงคิวและส่งลิ้งค์คิวให้</div>
+                </div>
+            </div>
 
-<div class="list-item"><div class="num-circle">1</div>แจ้งงาน</div>
-<div class="list-item"><div class="num-circle">2</div>เลือกแบบ</div>
-<div class="list-item"><div class="num-circle">3</div>บรีฟ</div>
-<div class="list-item"><div class="num-circle">4</div>ชำระเงิน</div>
+            <a href="https://drive.google.com/drive/folders/10tyt8kxnPx5Cmu486YaeytlmyXPH0Lu2" target="_blank" class="btn-bubbly btn-pink" style="margin-top: 25px;">
+                ✿ เลือกของทำป้าย
+            </a>
+        </div>
 
-<a class="btn btn-main">เลือกของ</a>
-</div>
+        <div class="section">
+            <h2 class="section-title">🌷 ราคางานสั่งทำ</h2>
+            
+            <div class="price-list">
+                <div class="price-item">
+                    <div class="p-name"><span style="color:#F6A5C9;">✿</span> แนวน่ารัก</div>
+                    <div class="p-val">89 - 129.-</div>
+                </div>
+                <div class="price-item">
+                    <div class="p-name"><span style="color:#F6A5C9;">✿</span> แนวออโรร่า&เพิร์ลเวฟ</div>
+                    <div class="p-val">99 - 169.-</div>
+                </div>
+                <div class="price-item">
+                    <div class="p-name"><span style="color:#F6A5C9;">✿</span> แนวADS</div>
+                    <div class="p-val">99 - 250.-</div>
+                </div>
+                <div class="price-item">
+                    <div class="p-name"><span style="color:#F6A5C9;">✿</span>รายละเอียดเยอะ/ยาก</div>
+                    <div class="p-val">มีบวกเพิ่ม</div>
+                </div>
+            </div>
+        </div>
 
-<div class="section">
-<h2 class="section-title">ราคา</h2>
+        <div class="section">
+            <h2 class="section-title">🌷 ระยะเวลารองาน</h2>
+            
+            <div class="duration-container-new">
+                
+                <div class="duration-box">
+                    <div class="d-icon" style="color: var(--main-pink);">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                    <div class="d-details">
+                        <span class="d-title">คิวปกติ</span>
+                        <span class="d-sub">ใช้เวลารองาน 1-3 วัน</span>
+                    </div>
+                    <div class="d-price normal">ราคาปกติ</div>
+                </div>
+                
+                <div class="duration-box fast">
+                    <div class="d-icon" style="color: var(--main-pink);">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+                    <div class="d-details">
+                        <span class="d-title">คิวเร่ง 24 ชม.</span>
+                        <span class="d-sub">รับงานไวทันใจ</span>
+                    </div>
+                    <div class="d-price">+100฿</div>
+                </div>
+                
+                <div class="duration-box super-fast">
+                    <div class="d-icon" style="position: relative; color: #FF8FBA;">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="#FF5252" style="position: absolute; bottom: -2px; right: -4px; filter: drop-shadow(0px 1px 2px rgba(0,0,0,0.2));">
+                            <path d="M17.66 11.2C17.43 10.9 17.15 10.64 16.89 10.38C16.22 9.78 15.46 9.35 14.82 8.72C13.33 7.26 13 4.85 13.95 3C13 3.23 12.18 3.75 11.46 4.32C8.87 6.4 7.85 10.05 9.1 13.22C9.14 13.32 9.15 13.44 9.11 13.55C9.07 13.65 8.98 13.73 8.87 13.76C8.76 13.79 8.64 13.76 8.55 13.69C8.45 13.62 8.4 13.5 8.38 13.39C8.16 11.83 8.62 10.27 9.53 9C8.32 10.16 7.57 11.75 7.42 13.41C7.22 15.61 8.05 17.81 9.61 19.33C11.16 20.85 13.39 21.5 15.5 21C17.64 20.48 19.36 18.86 19.86 16.7C20.43 14.28 19.5 12.28 17.66 11.2ZM14.5 18.5C13.67 18.5 13 17.83 13 17C13 16.17 14 14.5 14 14.5C14 14.5 15 16.17 15 17C15 17.83 14.33 18.5 14.5 18.5Z"/>
+                        </svg>
+                    </div>
+                    <div class="d-details">
+                        <span class="d-title">คิวเร่ง 3 ชม.</span>
+                        <span class="d-sub">ด่วนสุด งานไฟไหม้</span>
+                    </div>
+                    <div class="d-price">+150฿</div>
+                </div>
 
-<div class="price-item"><span>น่ารัก</span><span>89-129</span></div>
-<div class="price-item"><span>ออโรร่า</span><span>99-169</span></div>
-<div class="price-item"><span>ADS</span><span>99-250</span></div>
+                <div class="duration-note">
+                    ✿ กรณีร้านติดธุระกะทันหันจะทักแจ้งล่วงหน้าและเลื่อนคิวงาน หากลูกค้าไม่สามารถรอได้ร้านยินดีคืนเงินเต็มจำนวนค่ะ
+                </div>
 
-</div>
+            </div>
+        </div>
 
-<div class="section">
-<h2 class="section-title">ชำระเงิน</h2>
+        <div class="section">
+            <h2 class="section-title">🌷 ผลงานร้านฮิมะ</h2>
+            
+            <div class="showcase-grid">
+                <a href="https://drive.google.com/drive/folders/1iCJoITdkAIy0YyIN2cGP2oY_boskefSB" target="_blank" class="showcase-link">
+                    <div class="showcase-item">
+                        <img src="cute.PNG" alt="ผลงาน แวนหน้ารัก">
+                        <h4>Cute</h4>
+                        <p>แนวน่ารัก</p>
+                    </div>
+                </a>
 
-<div class="bank">
-<p>KBANK</p>
-<p>0358209394</p>
-</div>
+                <a href="https://drive.google.com/drive/folders/1lHXXeLsHyFte6gBxzd8fBYZ9oRCMtE8a" target="_blank" class="showcase-link">
+                    <div class="showcase-item">
+                        <img src="aurora.PNG" alt="ผลงาน แนวออโรร่า">
+                        <h4>Aurora</h4>
+                        <p>แนวออโรร่า</p>
+                    </div>
+                </a>
 
-</div>
+                <a href="https://drive.google.com/drive/folders/1lWey7mwXS9jjsZVfM_7HI8ijkdxYqRbG" target="_blank" class="showcase-link">
+                    <div class="showcase-item">
+                        <img src="pealwave.PNG" alt="ผลงาน แนวเซ็ทเวฟ">
+                        <h4>Pearlwave</h4>
+                        <p>แนวเพิร์ลเวฟ</p>
+                    </div>
+                </a>
 
-<div class="section">
-<h2 class="section-title">ติดต่อ</h2>
+                <a href="https://drive.google.com/drive/folders/1CLxQT8kMLcJZEfde_wL5GodRRgqV9MLV" target="_blank" class="showcase-link">
+                    <div class="showcase-item">
+                        <img src="ads.PNG" alt="ผลงาน แนวเกม/ทางกร">
+                        <h4>ADS</h4>
+                        <p>แนวเกม/ทางการ</p>
+                    </div>
+                </a>
 
-<div class="social">
-<a>LINE</a>
-<a>FB</a>
-<a>IG</a>
-</div>
+                <a href="https://drive.google.com/drive/folders/11rVarBy_nS83IpsclyYLucJuSoluyGOa" target="_blank" class="showcase-link">
+                    <div class="showcase-item">
+                        <img src="logo.PNG" alt="ผลงาน โลโก้/ลายน้ำ">
+                        <h4>Logo</h4>
+                        <p>โลโก้/ลายน้ำ</p>
+                    </div>
+                </a>
 
-</div>
+                <a href="https://drive.google.com/drive/folders/1T5DQC8dY22KFPtSL9I-ptTTFW19v2Hon" target="_blank" class="showcase-link">
+                    <div class="showcase-item">
+                        <img src="cf.PNG" alt="ผลงาน รอจ่าย24ชม.">
+                        <h4>CF 24 ชม.</h4>
+                        <p>รองาน24ชม.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
 
-</div>
+        <div class="section">
+            <h2 class="section-title">💳 ช่องทางการชำระเงิน</h2>
+            
+            <div class="bank-cards-wrapper">
+                <div class="bank-card">
+                    <div class="bank-name">KBANK</div>
+                    <div class="acc-name">คุณัญญา ก้านพลู</div>
+                    <div class="acc-note">บัญชีนี้เท่านั้น ✅</div>
+                    <div class="acc-num" id="kbank-num">0358209394</div>
+                    <button class="copy-btn" onclick="copyText('kbank-num', this)">
+                        📋 คัดลอกเลข
+                    </button>
+                </div>
 
+                <div class="bank-card">
+                    <div class="bank-name">True Money</div>
+                    <div class="acc-name">คุณัญญา ก้านพลู</div>
+                    <div class="acc-note">โอนเข้า Wallet +2฿ ✅</div>
+                    <div class="acc-num" id="true-num">0838270002</div>
+                    <button class="copy-btn" onclick="copyText('true-num', this)">
+                        📋 คัดลอกเบอร์
+                    </button>
+                </div>
+            </div>
+
+            <div class="payment-warning">
+                📌 รบกวนโอนแล้ว <b>แนบสลิปทุกครั้ง</b> นะคะ ✨<br>
+                <span style="color:#ff6eb4;">⚠️ โอนผิดต้องโอนใหม่น้า ทางร้านไม่โอนคืนทุกกรณีค่ะ 🙏💖</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">🌷 หมายเหตุ</h2>
+            <div class="list-container">
+                <div class="list-item">
+                    <span>✿</span>
+                    <div>บรีฟงานให้ละเอียดและเซ็คคำผิด ความครบถ้วนของบรีฟ ถ้าร้านส่งงานให้เช็คมีคำแก้ไขงาน หากพิมพ์ผิดหรืออยากเพิ่มบรีฟ</div>
+                </div>
+                <div class="list-item">
+                    <span>✿</span>
+                    <div>ของทำป้าย ถ้าไม่เลือก = ร้านเลือกให้ (เช่น หัวป้าย ฟอนต์ อยากเปลี่ยน จ่ายเพิ่ม 50฿) เพราะถือว่าบรีฟไม่ละเอียด</div>
+                </div>
+                <div class="list-item">
+                    <span>✿</span>
+                    <div>รับแก้ไขงานแค่ภายใน 7 วัน หากเลยเวลาไม่รับแก้ทุกกรณี ยกเว้นป้ายเรทที่ร้านแถมแบบเว้นราคา สามารถแก้ราคาให้ได้ (เหมาแก้ราคา 20฿ เฉพาะราคา)</div>
+                </div>
+                <div class="list-item">
+                    <span>✿</span>
+                    <div>หลังได้รับงานรบกวนรีบบันทึกเก็บไว้ทันที งานหาย / บันทึกช้า / เผลอลบงาน ไม่ส่งใหม่ทุกกรณี ⚠️</div>
+                </div>
+                <div class="list-item">
+                    <span>✿</span>
+                    <div>หากร้านสรุปยอดพร้อมส่งเลขบัญชีให้แล้วไม่โอนงดซื้อขายถาวร ยกเลิกคิวงานไม่คืนเงินใดๆทั้งสิ้นค่ะ ⚠️</div>
+                </div>
+                <div class="list-item">
+                    <span>✿</span>
+                    <div>ชำระเงิน = ยอมรับกฎของทางร้าน</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="social-section">
+            <div class="social-row">
+                <a href="https://lin.ee/XcbAB2v" target="_blank" class="social-btn-bubbly">
+                    <svg class="icon-mauve" viewBox="0 0 24 24"><path d="M12,2A10,10,0,0,0,2,12c0,5.5,4.5,10,10,10s10-4.5,10-10A10,10,0,0,0,12,2Zm5.5,14H6.5c-.3,0-.5-.2-.5-.5s.2-.5.5-.5h11c.3,0,.5.2,.5.5S17.8,16,17.5,16Zm0-3.5H6.5c-.3,0-.5-.2-.5-.5s.2-.5.5-.5h11c.3,0,.5.2,.5.5S17.8,12.5,17.5,12.5Zm0-3.5H6.5c-.3,0-.5-.2-.5-.5s.2-.5.5-.5h11c.3,0,.5.2,.5.5S17.8,9,17.5,9Z"/></svg>
+                    Line OA
+                </a>
+                
+                <a href="https://www.facebook.com/himawari.378446" target="_blank" class="social-btn-bubbly">
+                    <svg class="icon-mauve" viewBox="0 0 24 24"><path d="M12,2A10,10,0,0,0,2,12c0,5.5,4.5,10,10,10s10-4.5,10-10A10,10,0,0,0,12,2Zm4.5,10.5h-3v7h-3v-7h-2.5v-3H11v-2c0-1.1.9-2,2-2h1.5v3H13v1h3.5l-1,3Z"/></svg>
+                    Facebook
+                </a>
+                
+                <a href="https://www.instagram.com/himawr.official?igsh=Z2tua28yaTV3ZDNz&utm_source=qr" target="_blank" class="social-btn-bubbly">
+                    <svg class="icon-mauve" viewBox="0 0 24 24"><path d="M12,2A10,10,0,0,0,2,12c0,5.5,4.5,10,10,10s10-4.5,10-10A10,10,0,0,0,12,2Zm5,13.5A2.5,2.5,0,0,1,14.5,18H9.5A2.5,2.5,0,0,1,7,15.5V8.5A2.5,2.5,0,0,1,9.5,6h5A2.5,2.5,0,0,1,17,8.5Zm-5-8A3.5,3.5,0,1,0,15.5,11,3.5,3.5,0,0,0,12,7.5Zm0,5A1.5,1.5,0,1,1,13.5,11,1.5,1.5,0,0,1,12,12.5Z"/></svg>
+                    Instagram
+                </a>
+            </div>
+            
+            <p class="footer-text">
+                © 2026 Himawari — store ♡
+            </p>
+        </div>
+
+    </div>
+
+    <script>
+        function copyText(elementId, btnElement) {
+            var textToCopy = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(textToCopy).then(function() {
+                var originalText = btnElement.innerHTML;
+                btnElement.innerHTML = "✅ คัดลอกแล้ว!";
+                setTimeout(function() {
+                    btnElement.innerHTML = originalText;
+                }, 2000);
+            }).catch(function(err) {
+                console.error('ไม่สามารถคัดลอกได้: ', err);
+            });
+        }
+    </script>
 </body>
 </html>
